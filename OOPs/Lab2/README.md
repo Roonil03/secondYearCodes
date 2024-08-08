@@ -40,7 +40,7 @@ System.out.println(y);
 2. Write a Java program to find largest and smallest among 3 numbers using ternary operator.
 
 3. Write a Java program to execute the following statements. Observe and analyze the outputs:
-a. 	boolean x =true;   
+- 	boolean x =true;   
 	int y = x;
-b.  	boolean x =true;		     
+- 	boolean x =true;		     
 	int y =(int)x;
