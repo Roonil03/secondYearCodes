@@ -28,8 +28,8 @@
 - 	Sin(x) =x - (x3/3!) + (x5/5!)-…
 - 	Sum=1 + (1/2)2 + (1/3)3 +…
 
-3.	Write a Java program to display the numbers in the following format (Hint: use nested for loop).\	
-&nbsp;1\
+3.	Write a Java program to display the numbers in the following format (Hint: use nested for loop).\
+&nbsp;1 \
 &nbsp;2 3\
 &nbsp;4 5 6\
 &nbsp;7 8 9 10
