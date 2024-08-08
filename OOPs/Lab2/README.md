@@ -13,12 +13,15 @@
 3. Write a Java program to multiply and divide a number by 2 using bitwise operator. [Hint: use left shift and right shift bitwise operators]
 
 4. Write a Java program to execute the following statements. Observe and analyze the outputs:
+
 a. 	int x =10;		    
   	double y = x;		          
-  	System.out.println(y);	          
+  	System.out.println(y);
+
 b.  	double x = 10.5; 	
 	int y = x;		     
-	System.out.println(y);       
+	System.out.println(y);
+       
 c. 	double x=10.5;
 	int y = (int) x;
 	System.out.println(y);
@@ -29,17 +32,25 @@ c. 	double x=10.5;
 	Enter first number, operator, second number: 10 / 3 
 	Answer = 3.333333
 	Do another (y/n)? n
+
+
 # Additional exercises	
 1. Write a Java program to find the result of the following expressions for various values of a & b:
+
 	a. (a << 2) + (b >> 2)
+
 	b. (b > 0)
+
 	c. (a + b * 100) / 10
+
 	d. a & b
 
 2. Write a Java program to find largest and smallest among 3 numbers using ternary operator.
 
-3. Write a Java program to execute the following statements. Observe and analyze the outputs
+3. Write a Java program to execute the following statements. Observe and analyze the outputs:
+
 a. 	boolean x =true;   
 	int y = x;
+
 b.  	boolean x =true;		     
 	int y =(int)x;
