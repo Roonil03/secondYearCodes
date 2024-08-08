@@ -12,7 +12,7 @@
 
 3. Write a Java program to multiply and divide a number by 2 using bitwise operator. [Hint: use left shift and right shift bitwise operators]
 
-4. Write a Java program to execute the following statements. Observe and analyze the outputs.
+4. Write a Java program to execute the following statements. Observe and analyze the outputs:
 a. 	int x =10;		    
   	double y = x;		          
   	System.out.println(y);	          
@@ -25,8 +25,8 @@ c. 	double x=10.5;
 
 5.	Create the equivalent of a four-function calculator. The program should request the user to enter a number, an operator, and another number. (Use floating point.) It should then carry out the specified arithmetic operation: adding, subtracting, multiplying, or dividing the two numbers. Use a switch statement to select the operation. Finally, display the result. When it finishes the calculation, the program should ask if the user wants to do another calculation. The response can be 'y' or 'n'. [Hint: use do-while loop]
 
-	Example
-	Enter first number, operator, second number: 10 / 3
+	Example 
+	Enter first number, operator, second number: 10 / 3 
 	Answer = 3.333333
 	Do another (y/n)? n
 # Additional exercises	
