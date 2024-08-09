@@ -8,7 +8,7 @@ public class taylorSeries {
         int x = sc.nextInt();
         double sin = sin(x,n);
         double sum = sum(x);
-        System.err.println( "Sin: "+ sin + "\nSum: " + sum);
+        System.out.println( "Sin: "+ sin + "\nSum: " + sum);
         sc.close();
     }
     static double sin(int x, int n)
