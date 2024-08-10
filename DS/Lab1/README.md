@@ -20,3 +20,7 @@
 - Multiply two matrices
 - Add two matrices
 - Read a square matrix and check if it a magic square or not
+
+
+# Misc. Problems:
+1. Draw the letter Q with 2D Arrays
