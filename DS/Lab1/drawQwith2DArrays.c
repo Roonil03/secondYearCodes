@@ -11,6 +11,13 @@ int main()
     int lengthOfLine = n - p;
     char (*pattern)[n][n] = malloc(sizeof *pattern);
     int i,j;
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n;j++)
+        {
+            (*pattern)[i][j] = ' ';
+        }
+    }
     for(i=0;i<p;i++)
     {
         for(j=0;j<p;j++)
