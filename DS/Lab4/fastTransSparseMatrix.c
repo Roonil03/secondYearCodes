@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAX 100 
 
@@ -65,5 +66,5 @@ int main() {
     printf("\nTransposed Sparse Matrix:\n");
     printSparseMatrix(o, numTransEm);
 
-    return 0;
+    return EXIT_SUCCESS;
 }
