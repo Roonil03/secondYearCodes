@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX 100 
+#define MAX 100
 
 typedef struct {
     int row;
@@ -11,13 +11,24 @@ typedef struct {
 
 void fastTranspose(Element in[], int numEm, Element o[], int *numTransEm, int numRows, int numCols) {
     int rowTerms[MAX], startPos[MAX];
-    int i, j;
+    int i;
+
+    if (numRows > MAX || numCols > MAX) {
+        printf("Error! Matrix dimensions exceed the limit.\n");
+        *numTransEm = 0;
+        return;
+    }
 
     for (i = 0; i < numCols; i++) {
         rowTerms[i] = 0;
     }
 
     for (i = 0; i < numEm; i++) {
+        if (in[i].row >= numRows || in[i].col >= numCols) {
+            printf("Error! Element out of bounds.\n");
+            *numTransEm = 0;
+            return;
+        }
         rowTerms[in[i].col]++;
     }
 
@@ -48,14 +59,32 @@ int main() {
     int numRows, numCols;
 
     printf("Enter the number of rows and columns in the sparse matrix: ");
-    scanf("%d %d", &numRows, &numCols);
+    if (scanf("%d %d", &numRows, &numCols) != 2) {
+        printf("Error: Invalid input.\n");
+        return EXIT_FAILURE;
+    }
+
+    if (numRows > MAX || numCols > MAX) {
+        printf("Error: Matrix dimensions exceed the limit.\n");
+        return EXIT_FAILURE;
+    }
 
     printf("Enter the number of non-zero elements: ");
-    scanf("%d", &numEm);
+    if (scanf("%d", &numEm) != 1 || numEm < 0 || numEm > MAX) {
+        printf("Error: Invalid number of elements.\n");
+        return EXIT_FAILURE;
+    }
 
     printf("Enter the non-zero elements (row column value):\n");
     for (int i = 0; i < numEm; i++) {
-        scanf("%d %d %d", &in[i].row, &in[i].col, &in[i].value);
+        if (scanf("%d %d %d", &in[i].row, &in[i].col, &in[i].value) != 3) {
+            printf("Error: Invalid element input.\n");
+            return EXIT_FAILURE;
+        }
+        if (in[i].row >= numRows || in[i].col >= numCols) {
+            printf("Error: Element out of bounds.\n");
+            return EXIT_FAILURE;
+        }
     }
 
     fastTranspose(in, numEm, o, &numTransEm, numRows, numCols);
