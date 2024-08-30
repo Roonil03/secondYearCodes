@@ -13,7 +13,7 @@ class Complex{
     {
         int num[] = new int[2];
         num[0] = integer + comp[0];
-        num[1] = comp[0];
+        num[1] = comp[1];
         return num;
     }
     static int[] add(int[] comp1, int[] comp2)

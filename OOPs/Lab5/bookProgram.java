@@ -1,9 +1,11 @@
 import java.util.*;
 public class bookProgram {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         Book list[] = new Book[6];
         int i;
+        Scanner sc = new Scanner(System.in);
+        // Scanner sc2 = new Scanner(System.in);
+        // Scanner sc3 = new Scanner(System.in);
         for(i=0;i<6;i++)
         {
             String s1,s2; int i1;
@@ -13,9 +15,13 @@ public class bookProgram {
             s2 = sc.nextLine();
             System.out.println("Enter the edition number: ");
             i1 = sc.nextInt();
+            sc.nextLine();
             list[i] = new Book(s1,s2,i1);
             System.out.println("\n");
         }
+
+        // sc2.close();
+        // sc3.close();
         for(i = 0; i<6;i++)
         {
             for(int j=i;j<6-1;j++)

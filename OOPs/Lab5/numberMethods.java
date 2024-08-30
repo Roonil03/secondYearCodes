@@ -39,10 +39,10 @@ class Number{
         }
         return false;
     }
-    boolean isOdd(){
+    boolean isEven(){
         return num%2==0?true:false;
     }
-    boolean isEven(){
+    boolean isOdd(){
         return num%2!=0?true:false;
     }
     boolean isPrime(){
@@ -61,15 +61,10 @@ class Number{
         return true;
     }
     boolean isArmstrong(){
-        int i,temp = (int)num,b=0;
-        int count=0;
-        while(temp!=0)
-        {
-            temp /= 10;
-            count++;
-        }
-        temp = (int)num;
-        for(i=0;i<temp;i++)
+        int temp = (int)num,b=0;
+        int count= (Integer.toString(temp)).length();
+        //temp = (int)num;
+        while (temp!=0)
         {
             b += Math.pow(temp%10,count);
             temp /= 10;
