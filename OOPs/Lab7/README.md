@@ -93,7 +93,6 @@
      System.out.println("i:"+obj1.i);<br>
      System.out.println("i:"+obj1.i);<br>
   }<br>
-<br>
   void funcn()<br>
   {<br>
 //Static method called in non-static method<br>
