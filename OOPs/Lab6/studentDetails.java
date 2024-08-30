@@ -51,12 +51,22 @@ public class studentDetails {
             }
         }
         System.out.println("\nUG Students:");
-        for(int i = 0; i<ugCount;i++){
-            s[ugIndex[i]].display();
+        if(ugCount == 0){
+            System.out.println("There are no UG students");
+        }
+        else{
+            for(int i = 0; i<ugCount;i++){
+                s[ugIndex[i]].display();
+            }
         }
         System.out.println("\nPG Students:");
-        for(int i = 0;i<pgCount;i++){
-            s[pgIndex[i]].display();
+        if(pgCount==0){
+            System.out.println("There are no PG students");
+        }
+        else{
+            for(int i = 0;i<pgCount;i++){
+                s[pgIndex[i]].display();
+            }
         }
         sc.close();
     }
