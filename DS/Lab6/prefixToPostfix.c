@@ -47,7 +47,7 @@ void postfixToInfix(const char* postfix, char* infix) {
     Stack s;
     initialize(&s);
     int len = strlen(postfix);
-    
+
     for (int i = 0; i < len; i++) {
         if (isOperand(postfix[i])) {
             char operand[2] = {postfix[i], '\0'};
@@ -55,16 +55,16 @@ void postfixToInfix(const char* postfix, char* infix) {
         } else {
             char op1[MAX];
             char op2[MAX];
-            
+
             strcpy(op1, pop(&s));
             strcpy(op2, pop(&s));
-            
+
             char temp[MAX];
             snprintf(temp, sizeof(temp), "(%s%c%s)", op2, postfix[i], op1);
             push(&s, temp);
         }
     }
-    
+
     strcpy(infix, pop(&s));
 }
 

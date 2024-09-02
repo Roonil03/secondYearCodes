@@ -95,7 +95,7 @@ int eval(char* post)
 
 int main() {
     char post[MAX];
-    printf("Enter a postfix expressionL: ");
+    printf("Enter a postfix expression: ");
     scanf("%s",post);
     printf("Result: %d",eval(post));
     return EXIT_SUCCESS;

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <math.h>
 
 #define MAX 100
 
@@ -17,21 +18,21 @@ int evaluatePrefix(char* exp);
 
 int main() {
     char prefix[MAX];
-    
+
     printf("Enter the prefix expression: ");
     if (fgets(prefix, sizeof(prefix), stdin) == NULL) {
         fprintf(stderr, "Error reading input.\n");
         exit(EXIT_FAILURE);
     }
-    
+
     size_t len = strlen(prefix);
     if (len > 0 && prefix[len - 1] == '\n') {
         prefix[len - 1] = '\0';
     }
-    
+
     int result = evaluatePrefix(prefix);
     printf("The result of the prefix expression is: %d\n", result);
-    
+
     return EXIT_SUCCESS;
 }
 
@@ -57,7 +58,7 @@ int isEmpty(Stack* s) {
 
 int evaluatePrefix(char* exp) {
     Stack s;
-    s.top = -1;  
+    s.top = -1;
 
     int length = strlen(exp);
 
@@ -81,12 +82,14 @@ int evaluatePrefix(char* exp) {
                 case '+': push(&s, op1 + op2); break;
                 case '-': push(&s, op1 - op2); break;
                 case '*': push(&s, op1 * op2); break;
-                case '/': 
+                case '/':
                     if (op2 == 0) {
                         fprintf(stderr, "Error: Division by zero.\n");
                         exit(EXIT_FAILURE);
                     }
                     push(&s, op1 / op2); break;
+                case '^':
+                    push(&s,(int)pow(op1,op2));break;
                 default:
                     fprintf(stderr, "Error: Invalid operator %c\n", exp[i]);
                     exit(EXIT_FAILURE);
