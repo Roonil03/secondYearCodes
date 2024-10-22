@@ -13,18 +13,31 @@ Node* createNode(int data) {
     return newNode;
 }
 
-Node* insertNode(Node* root, int data) {
-    if (root == NULL) {
-        return createNode(data);
+Node* createTree() {
+    int data;
+    char choice;
+
+    printf("Do you want to insert a node? (y/n): ");
+    scanf(" %c", &choice);
+
+    if (choice == 'n' || choice == 'N') {
+        return NULL;
     }
-    if (data < root->data)
-        root->left = insertNode(root->left, data);
-    else
-        root->right = insertNode(root->right, data);
-    return root;
+
+    printf("Enter data: ");
+    scanf("%d", &data);
+
+    Node* node = createNode(data);
+
+    printf("Inserting left child of %d:\n", data);
+    node->left = createTree();
+
+    printf("Inserting right child of %d:\n", data);
+    node->right = createTree();
+
+    return node;
 }
 
-// Pre-order traversal (DFS): Root -> Left -> Right
 void preOrder(Node* root) {
     if (root == NULL)
         return;
@@ -35,16 +48,13 @@ void preOrder(Node* root) {
 
 int main() {
     Node* root = NULL;
-    int data, n, i;
-    printf("Enter the number of nodes you want to insert: ");
-    scanf("%d", &n);
-    for (i = 0; i < n; i++) {
-        printf("Enter data for node %d: ", i + 1);
-        scanf("%d", &data);
-        root = insertNode(root, data);
-    }
+
+    printf("Start creating the binary tree:\n");
+    root = createTree();
+
     printf("Pre-order traversal of the binary tree:\n");
     preOrder(root);
     printf("\n");
+
     return EXIT_SUCCESS;
 }
