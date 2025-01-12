@@ -1,0 +1,1 @@
+demoTrial.o: demoTrial.asm
