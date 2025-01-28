@@ -1,0 +1,2 @@
+Dependencies for Project 'Adding128BitNumbers', Target 'Target 1': (DO NOT MODIFY !)
+F (.\adding129Numbers.asm)(0x679066AE)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\NXP\LPC17xx --list "adding129Numbers.lst" --xref -o "adding129Numbers.o" --depend "adding129Numbers.d")

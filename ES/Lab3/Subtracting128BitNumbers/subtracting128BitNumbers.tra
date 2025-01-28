@@ -1,0 +1,19 @@
+*** Creating Trace Output File 'subtracting128BitNumbers.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"subtracting128numbers.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "subtracting128numbers.o" 
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x10000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\subtracting128BitNumbers.map" -o subtracting128BitNumbers.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'subtracting128BitNumbers.axf'
+### ADS-LD Command File: 'subtracting128BitNumbers.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'subtracting128BitNumbers.lnp', Handle=0x0000279C
+### Writing '.lnp' file
+### ADS-LD Command file 'subtracting128BitNumbers.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

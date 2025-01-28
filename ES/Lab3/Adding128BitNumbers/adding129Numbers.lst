@@ -1,0 +1,180 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         
+    4 00000000         __Vectors
+    5 00000000 10001000        DCD              0x10001000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             MyCode, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         
+   12 00000000         Reset_Handler
+   13 00000000 F8DF 804C       LDR              R8, = Src0
+   14 00000004 F8DF 904C       LDR              r9, = Src1
+   15 00000008 F04F 0504       MOV              R5, N
+   16 0000000C 4C12            LDR              R4, = DST
+   17 0000000E         ;ADD R8, #12
+   18 0000000E         ;ADD R9, #12
+   19 0000000E         ;ADD R4, #12
+   20 0000000E         Up1
+   21 0000000E F858 1B04       LDR              R1, [r8], #4 ;#-4
+   22 00000012 F859 2B04       LDR              r2, [r9], #4 ;#-4
+   23 00000016 188E            ADDS             r6, r1, r2
+   24 00000018 443E            ADD              r6, r6, r7
+   25 0000001A F04F 0700       MOV              r7, #0
+   26 0000001E F157 0700       ADCS             r7, #0
+   27 00000022 F844 6B04       STR              r6, [r4], #4 ;#-4
+   28 00000026 3D01            SUBS             R5, #1
+   29 00000028 D1F1            BNE              Up1
+   30 0000002A 19E4            ADDS             r4, r4, r7
+   31 0000002C         
+   32 0000002C E7FE    STOP    B                STOP        ; while(1)
+   33 0000002E         
+   34 0000002E 00000004 
+                       N       EQU              4
+   35 0000002E 00 00 10111213 
+              12312312 
+              13141516 
+              44114411 Src0    DCD              0x10111213, 0x12312312, 0x13141
+516, 0x44114411
+   36 00000040 FF111111 
+              F1111111 
+              01111111 
+              01111111 Src1    DCD              0xFF111111, 0xF1111111, 0x01111
+111, 0x01111111
+   37 00000050         
+   38 00000050 00000000 
+              00000000 
+              00000000         AREA             DATASEG, DATA, READWRITE
+   39 00000000 00000000 
+                       DST     DCD              0           ;
+   40 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=adding12
+9Numbers.d -oadding129Numbers.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Incl
+ude -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=adding129N
+umbers.lst adding129Numbers.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file adding129Numbers.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file adding129Numbers.asm
+   Uses
+      At line 2 in file adding129Numbers.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 8 in file adding129Numbers.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 12 in file adding129Numbers.asm
+   Uses
+      At line 6 in file adding129Numbers.asm
+      At line 10 in file adding129Numbers.asm
+
+STOP 0000002C
+
+Symbol: STOP
+   Definitions
+      At line 32 in file adding129Numbers.asm
+   Uses
+      At line 32 in file adding129Numbers.asm
+Comment: STOP used once
+Src0 00000030
+
+Symbol: Src0
+   Definitions
+      At line 35 in file adding129Numbers.asm
+   Uses
+      At line 13 in file adding129Numbers.asm
+Comment: Src0 used once
+Src1 00000040
+
+Symbol: Src1
+   Definitions
+      At line 36 in file adding129Numbers.asm
+   Uses
+      At line 14 in file adding129Numbers.asm
+Comment: Src1 used once
+Up1 0000000E
+
+Symbol: Up1
+   Definitions
+      At line 20 in file adding129Numbers.asm
+   Uses
+      At line 29 in file adding129Numbers.asm
+Comment: Up1 used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATASEG 00000000
+
+Symbol: DATASEG
+   Definitions
+      At line 38 in file adding129Numbers.asm
+   Uses
+      None
+Comment: DATASEG unused
+DST 00000000
+
+Symbol: DST
+   Definitions
+      At line 39 in file adding129Numbers.asm
+   Uses
+      At line 16 in file adding129Numbers.asm
+Comment: DST used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+N 00000004
+
+Symbol: N
+   Definitions
+      At line 34 in file adding129Numbers.asm
+   Uses
+      At line 15 in file adding129Numbers.asm
+Comment: N used once
+1 symbol
+344 symbols in table

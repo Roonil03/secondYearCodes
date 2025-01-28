@@ -1,0 +1,143 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             MyCode, CODE, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001010        DCD              0x10001010
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MyCode, CODE, READONLY
+    8 00000008                 ENTRY
+    9 00000008                 EXPORT           Reset_Handler
+   10 00000008         
+   11 00000008         Reset_Handler
+   12 00000008 480B            LDR              R0, =n1
+   13 0000000A 6801            LDR              R1, [R0]
+   14 0000000C F8D0 A000       LDR              R10, [R0]
+   15 00000010 F1BA 0A01       SUBS             R10, R10, #1
+   16 00000014         ;MOV R2, #0x213
+   17 00000014 4A09            LDR              R2, =n2
+   18 00000016 6813            LDR              R3, [R2]
+   19 00000018         loop
+   20 00000018 2900            CMP              R1, #0
+   21 0000001A D005            BEQ              mon
+   22 0000001C 185B            ADDS             R3, R3, R1
+   23 0000001E 416D            ADCS             R5, R5
+   24 00000020 D3FF            BCC              ytt
+   25 00000022         ;ADD R2, R2, #1
+   26 00000022         
+   27 00000022         ytt
+   28 00000022 F1BA 0A01       SUBS             R10, R10, #1
+   29 00000026 D1F7            BNE              loop
+   30 00000028         mon
+   31 00000028 4614            MOV              R4, R2
+   32 0000002A 461E            MOV              R6, R3
+   33 0000002C 442E            ADD              R6, R6, R5
+   34 0000002E         
+   35 0000002E         STOP
+   36 0000002E E7FE            B                STOP
+   37 00000030         
+   38 00000030 00000010 
+                       n1      DCD              16
+   39 00000034 00000010 
+                       n2      DCD              16
+   40 00000038                 ALIGN
+   41 00000038         
+   42 00000038                 END
+              00000000 
+              00000000 
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\contin
+uouslyadding.d -o.\continuouslyadding.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CM
+SIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\
+continuouslyadding.lst continuouslyAdding.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 1 in file continuouslyAdding.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000008
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file continuouslyAdding.asm
+   Uses
+      At line 5 in file continuouslyAdding.asm
+      At line 9 in file continuouslyAdding.asm
+
+STOP 0000002E
+
+Symbol: STOP
+   Definitions
+      At line 35 in file continuouslyAdding.asm
+   Uses
+      At line 36 in file continuouslyAdding.asm
+Comment: STOP used once
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file continuouslyAdding.asm
+   Uses
+      At line 2 in file continuouslyAdding.asm
+Comment: __Vectors used once
+loop 00000018
+
+Symbol: loop
+   Definitions
+      At line 19 in file continuouslyAdding.asm
+   Uses
+      At line 29 in file continuouslyAdding.asm
+Comment: loop used once
+mon 00000028
+
+Symbol: mon
+   Definitions
+      At line 30 in file continuouslyAdding.asm
+   Uses
+      At line 21 in file continuouslyAdding.asm
+Comment: mon used once
+n1 00000030
+
+Symbol: n1
+   Definitions
+      At line 38 in file continuouslyAdding.asm
+   Uses
+      At line 12 in file continuouslyAdding.asm
+Comment: n1 used once
+n2 00000034
+
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: n2
+   Definitions
+      At line 39 in file continuouslyAdding.asm
+   Uses
+      At line 17 in file continuouslyAdding.asm
+Comment: n2 used once
+ytt 00000022
+
+Symbol: ytt
+   Definitions
+      At line 27 in file continuouslyAdding.asm
+   Uses
+      At line 24 in file continuouslyAdding.asm
+Comment: ytt used once
+9 symbols
+342 symbols in table

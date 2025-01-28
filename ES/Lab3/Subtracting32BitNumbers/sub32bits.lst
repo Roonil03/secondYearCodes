@@ -1,0 +1,138 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001010        DCD              0x10001010
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MyCode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 F8DF D01C       LDR              SP, =0x10008000
+   13 00000004 4907            LDR              R1, =n1
+   14 00000006 680A            LDR              R2, [R1]
+   15 00000008 4907            LDR              R1, =n2
+   16 0000000A 680B            LDR              R3, [R1]
+   17 0000000C EBA2 0403       SUB              R4, R2, R3
+   18 00000010 4906            LDR              R1, =res
+   19 00000012 600C            STR              R4, [R1]
+   20 00000014         STOP
+   21 00000014 E7FE            B                STOP
+   22 00000016 00 00 12345678 
+                       n1      DCD              0x12345678
+   23 0000001C 0ABCDEF0 
+                       n2      DCD              0x0ABCDEF0
+   24 00000020 10008000 
+              00000000 
+              00000000 
+              00000000         AREA             MyData, DATA, READWRITE
+   25 00000000 00000000 
+                       res     DCD              0
+   26 00000004                 ALIGN
+                       
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\sub32b
+its.d -o.\sub32bits.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\K
+eil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\sub32bits.lst Sub3
+2Bits.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file Sub32Bits.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file Sub32Bits.asm
+   Uses
+      At line 2 in file Sub32Bits.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 7 in file Sub32Bits.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file Sub32Bits.asm
+   Uses
+      At line 5 in file Sub32Bits.asm
+      At line 9 in file Sub32Bits.asm
+
+STOP 00000014
+
+Symbol: STOP
+   Definitions
+      At line 20 in file Sub32Bits.asm
+   Uses
+      At line 21 in file Sub32Bits.asm
+Comment: STOP used once
+n1 00000018
+
+Symbol: n1
+   Definitions
+      At line 22 in file Sub32Bits.asm
+   Uses
+      At line 13 in file Sub32Bits.asm
+Comment: n1 used once
+n2 0000001C
+
+Symbol: n2
+   Definitions
+      At line 23 in file Sub32Bits.asm
+   Uses
+      At line 15 in file Sub32Bits.asm
+Comment: n2 used once
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyData 00000000
+
+Symbol: MyData
+   Definitions
+      At line 24 in file Sub32Bits.asm
+   Uses
+      None
+Comment: MyData unused
+res 00000000
+
+Symbol: res
+   Definitions
+      At line 25 in file Sub32Bits.asm
+   Uses
+      At line 18 in file Sub32Bits.asm
+Comment: res used once
+2 symbols
+342 symbols in table

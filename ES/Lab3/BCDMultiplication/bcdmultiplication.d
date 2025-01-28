@@ -1,0 +1,1 @@
+.\bcdmultiplication.o: bcdMultiplication.asm

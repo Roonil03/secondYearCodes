@@ -1,0 +1,1 @@
+.\lcm.o: lcm.asm
