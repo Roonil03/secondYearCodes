@@ -1,0 +1,1 @@
+transferringFromNonOverlapping.o: transferringFromNonOverlapping.asm

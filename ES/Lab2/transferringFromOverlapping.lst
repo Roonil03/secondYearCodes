@@ -1,0 +1,155 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         
+    4 00000000         __Vectors
+    5 00000000 10001000        DCD              0x10001000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             MyCode, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         
+   12 00000000         Reset_Handler
+   13 00000000 4805            LDR              R0, = Src +(N - 1)*4
+   14 00000002 4A06            LDR              R2, = Src + (N+SHIFTS - 1) * 4
+   15 00000004 F04F 0505       MOV              R5 , N
+   16 00000008 F850 1904 
+                       UP      LDR              R1, [R0], #-4
+   17 0000000C F842 1904       STR              R1, [r2], #-4
+   18 00000010 3D01            SUBS             R5, #1
+   19 00000012 D1F9            BNE              UP          ; if(z= 0)
+   20 00000014 E7FE    STOP    B                STOP        ; while(1)
+   21 00000016 00000005 
+                       N       EQU              5
+   22 00000016 00000003 
+                       SHIFTS  EQU              3
+   23 00000016         ;Src DCD 1,2,3,4,5,6,7,8,9,10;
+   24 00000016         
+   25 00000016 00 00 00000010 
+              0000001C         AREA             DATASEG, DATA, READWRITE
+   26 00000000 00000000 
+                       Src     DCD              0           ;
+   27 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=transfer
+ringFromOverlapping.d -otransferringFromOverlapping.o -IC:\Keil\ARM\RV31\INC -I
+C:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SET
+A 1" --list=transferringFromOverlapping.lst transferringFromOverlapping.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file transferringFromOverlapping.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file transferringFromOverlapping.asm
+   Uses
+      At line 2 in file transferringFromOverlapping.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 8 in file transferringFromOverlapping.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 12 in file transferringFromOverlapping.asm
+   Uses
+      At line 6 in file transferringFromOverlapping.asm
+      At line 10 in file transferringFromOverlapping.asm
+
+STOP 00000014
+
+Symbol: STOP
+   Definitions
+      At line 20 in file transferringFromOverlapping.asm
+   Uses
+      At line 20 in file transferringFromOverlapping.asm
+Comment: STOP used once
+UP 00000008
+
+Symbol: UP
+   Definitions
+      At line 16 in file transferringFromOverlapping.asm
+   Uses
+      At line 19 in file transferringFromOverlapping.asm
+Comment: UP used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATASEG 00000000
+
+Symbol: DATASEG
+   Definitions
+      At line 25 in file transferringFromOverlapping.asm
+   Uses
+      None
+Comment: DATASEG unused
+Src 00000000
+
+Symbol: Src
+   Definitions
+      At line 26 in file transferringFromOverlapping.asm
+   Uses
+      At line 13 in file transferringFromOverlapping.asm
+      At line 14 in file transferringFromOverlapping.asm
+
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+N 00000005
+
+Symbol: N
+   Definitions
+      At line 21 in file transferringFromOverlapping.asm
+   Uses
+      At line 13 in file transferringFromOverlapping.asm
+      At line 14 in file transferringFromOverlapping.asm
+      At line 15 in file transferringFromOverlapping.asm
+
+SHIFTS 00000003
+
+Symbol: SHIFTS
+   Definitions
+      At line 22 in file transferringFromOverlapping.asm
+   Uses
+      At line 14 in file transferringFromOverlapping.asm
+Comment: SHIFTS used once
+2 symbols
+343 symbols in table

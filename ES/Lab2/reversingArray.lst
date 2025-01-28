@@ -1,0 +1,186 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         
+    4 00000000         __Vectors
+    5 00000000 10001000        DCD              0x10001000
+    6 00000004 00000000        DCD              Reset_Handler
+    7 00000008                 ALIGN
+    8 00000008                 AREA             MyCode, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         
+   12 00000000         Reset_Handler
+   13 00000000 F8DF 8058       LDR              R8, = Src0
+   14 00000004 4F16            LDR              R7, = Src1
+   15 00000006 F04F 050A       MOV              R5, N
+   16 0000000A         Up1
+   17 0000000A F858 1B04       LDR              R1, [r8], #4
+   18 0000000E F847 1B04       STR              r1, [r7], #4
+   19 00000012 3D01            SUBS             R5, #1
+   20 00000014 D1F9            BNE              Up1
+   21 00000016         
+   22 00000016 4812            LDR              R0, = Src1
+   23 00000018 4A12            LDR              R2, = Src1 + (N - 1) * 4
+   24 0000001A F04F 0505       MOV              R5 , N / 2
+   25 0000001E         UP
+   26 0000001E 6814            LDR              R4, [R2]
+   27 00000020 6801            LDR              R1, [R0]
+   28 00000022 F842 1904       STR              R1, [r2], #-4
+   29 00000026 4621            MOV              R1, r4
+   30 00000028 F840 1B04       STR              R1, [r0], #4
+   31 0000002C 3D01            SUBS             R5, #1
+   32 0000002E D1F6            BNE              UP          ; if(z= 0)
+   33 00000030 E7FE    STOP    B                STOP        ; while(1)
+   34 00000032         
+   35 00000032 0000000A 
+                       N       EQU              10
+   36 00000032 00 00 00000001 
+              00000002 
+              00000003 
+              00000004 
+              00000005 
+              00000006 
+              00000007 
+              00000008 
+              00000009 
+              0000000A Src0    DCD              1,2,3,4,5,6,7,8,9,10 ;
+   37 0000005C         
+   38 0000005C 00000000 
+              00000000 
+              00000024 
+              00000000         AREA             DATASEG, DATA, READWRITE
+   39 00000000 00000000 
+                       Src1    DCD              0           ;
+   40 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=reversin
+gArray.d -oreversingArray.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include 
+-IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=reversingArray
+.lst reversingArray.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file reversingArray.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 4 in file reversingArray.asm
+   Uses
+      At line 2 in file reversingArray.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 8 in file reversingArray.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 12 in file reversingArray.asm
+   Uses
+      At line 6 in file reversingArray.asm
+      At line 10 in file reversingArray.asm
+
+STOP 00000030
+
+Symbol: STOP
+   Definitions
+      At line 33 in file reversingArray.asm
+   Uses
+      At line 33 in file reversingArray.asm
+Comment: STOP used once
+Src0 00000034
+
+Symbol: Src0
+   Definitions
+      At line 36 in file reversingArray.asm
+   Uses
+      At line 13 in file reversingArray.asm
+Comment: Src0 used once
+UP 0000001E
+
+Symbol: UP
+   Definitions
+      At line 25 in file reversingArray.asm
+   Uses
+      At line 32 in file reversingArray.asm
+Comment: UP used once
+Up1 0000000A
+
+Symbol: Up1
+   Definitions
+      At line 16 in file reversingArray.asm
+   Uses
+      At line 20 in file reversingArray.asm
+Comment: Up1 used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DATASEG 00000000
+
+Symbol: DATASEG
+   Definitions
+      At line 38 in file reversingArray.asm
+   Uses
+      None
+Comment: DATASEG unused
+Src1 00000000
+
+Symbol: Src1
+   Definitions
+      At line 39 in file reversingArray.asm
+   Uses
+      At line 14 in file reversingArray.asm
+      At line 22 in file reversingArray.asm
+      At line 23 in file reversingArray.asm
+
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+N 0000000A
+
+Symbol: N
+   Definitions
+      At line 35 in file reversingArray.asm
+   Uses
+      At line 15 in file reversingArray.asm
+      At line 23 in file reversingArray.asm
+      At line 24 in file reversingArray.asm
+
+1 symbol
+344 symbols in table

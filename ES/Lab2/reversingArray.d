@@ -1,0 +1,1 @@
+reversingArray.o: reversingArray.asm
