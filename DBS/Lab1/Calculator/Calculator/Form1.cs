@@ -363,6 +363,5 @@ namespace Calculator
             op = '/';
         }
 
-
     }
 }
