@@ -1,0 +1,3 @@
+# Lab exercises:
+1. Develop a notepad application using Rich Text Box, Menu Strip, File Dialogue, Color Dialog, Font Dialog components.
+2. Develop a user interface for a banking application. A customer should be able to login with his/her credentials. Also, customer should be able to change his/her password. The second form should display the customer’s user name, balance, last access, date and last 5 transactions. The third form should facilitate money transfer by adding beneficiary. The amount transferred and the current balance in the account should be displayed as a message.

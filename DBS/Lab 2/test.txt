@@ -1,0 +1,16 @@
+File:
+New = Text is clear
+Open = File should be there
+Save = Saves file
+Exit = exit the program
+
+Edit:
+Cut
+Copy
+Paste
+Font Colour
+Font Size
+
+View:
+Status Bar
+Word Wrap
