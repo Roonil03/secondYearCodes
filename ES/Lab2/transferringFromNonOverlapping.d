@@ -1,1 +1,1 @@
-transferringFromNonOverlapping.o: transferringFromNonOverlapping.asm
+.\transferringfromnonoverlapping.o: transferringFromNonOverlapping.asm

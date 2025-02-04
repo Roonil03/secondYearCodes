@@ -19,9 +19,9 @@ UP LDR R1, [R0], #4
 	BNE UP ; if(z= 0)
 STOP B STOP ; while(1)
 
-;Src DCD 1,2,3,4,5,6,7,8,9,10;
+Src DCD 1,2,3,4,5,6,7,8,9,10;
 
 	AREA DATASEG, DATA, READWRITE
-Src DCD 1,2,3,4,5,6,7,8,9,10;
+;Src DCD 1,2,3,4,5,6,7,8,9,10;
 DST DCD 0;
 	END

@@ -58,10 +58,10 @@ ARM Macro Assembler    Page 1
    39 00000000 00000000 
                        Src1    DCD              0           ;
    40 00000004                 END
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=reversin
-gArray.d -oreversingArray.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include 
--IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=reversingArray
-.lst reversingArray.asm
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\revers
+ingarray.d -o.\reversingarray.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Incl
+ude -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\reversin
+garray.lst reversingArray.asm
 
 
 

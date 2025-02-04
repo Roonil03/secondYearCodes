@@ -36,10 +36,11 @@ ARM Macro Assembler    Page 1
    26 00000000 00000000 
                        Src     DCD              0           ;
    27 00000004                 END
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=transfer
-ringFromOverlapping.d -otransferringFromOverlapping.o -IC:\Keil\ARM\RV31\INC -I
-C:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SET
-A 1" --list=transferringFromOverlapping.lst transferringFromOverlapping.asm
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\transf
+erringfromoverlapping.d -o.\transferringfromoverlapping.o -IC:\Keil\ARM\RV31\IN
+C -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL
+ SETA 1" --list=.\transferringfromoverlapping.lst transferringFromOverlapping.a
+sm
 
 
 

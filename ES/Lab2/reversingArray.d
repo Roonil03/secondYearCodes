@@ -1,1 +1,1 @@
-reversingArray.o: reversingArray.asm
+.\reversingarray.o: reversingArray.asm
