@@ -387,6 +387,18 @@
           </LDads>
         </TargetArmAds>
       </TargetOption>
+      <Groups>
+        <Group>
+          <GroupName>SourceGroup</GroupName>
+          <Files>
+            <File>
+              <FileName>sumOfArrayElements.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\sumOfArrayElements.asm</FilePath>
+            </File>
+          </Files>
+        </Group>
+      </Groups>
     </Target>
   </Targets>
 

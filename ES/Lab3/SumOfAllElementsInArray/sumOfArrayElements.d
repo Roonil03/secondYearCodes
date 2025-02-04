@@ -1,1 +1,1 @@
-sumOfArrayElements.o: sumOfArrayElements.asm
+.\sumofarrayelements.o: sumOfArrayElements.asm

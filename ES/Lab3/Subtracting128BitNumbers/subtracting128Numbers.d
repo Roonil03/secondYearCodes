@@ -1,1 +1,1 @@
-subtracting128Numbers.o: subtracting128Numbers.asm
+.\subtracting128numbers.o: subtracting128Numbers.asm

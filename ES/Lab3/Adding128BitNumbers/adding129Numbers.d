@@ -1,1 +1,1 @@
-adding129Numbers.o: adding129Numbers.asm
+.\adding129numbers.o: adding129Numbers.asm

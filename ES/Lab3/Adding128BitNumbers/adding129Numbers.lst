@@ -56,10 +56,10 @@ ARM Macro Assembler    Page 1
    39 00000000 00000000 
                        DST     DCD              0           ;
    40 00000004                 END
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=adding12
-9Numbers.d -oadding129Numbers.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Incl
-ude -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=adding129N
-umbers.lst adding129Numbers.asm
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\adding
+129numbers.d -o.\adding129numbers.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\
+Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\addi
+ng129numbers.lst adding129Numbers.asm
 
 
 

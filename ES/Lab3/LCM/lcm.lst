@@ -13,25 +13,25 @@ ARM Macro Assembler    Page 1
     7 00000008                 AREA             MyCode, CODE, READONLY
     8 00000000                 ENTRY
     9 00000000                 EXPORT           Reset_Handler
-   10 00000000         Reset_Handler
-   11 00000000 F8DF D034       LDR              SP, =0x10008000
-   12 00000004 490D            LDR              R1, =a
-   13 00000006 680A            LDR              R2, [R1]
-   14 00000008 490D            LDR              R1, =b
-   15 0000000A 680B            LDR              R3, [R1]
-   16 0000000C F04F 0401       MOV              R4, #1
-   17 00000010         loop
-   18 00000010 FB04 F502       MUL              R5, R4, R2
-   19 00000014 FBB5 F6F3       UDIV             R6, R5, R3
-   20 00000018 FB06 5713       MLS              R7, R6, R3, R5
-   21 0000001C 2F00            CMP              R7, #0
-   22 0000001E D002            BEQ              res
-   23 00000020 F104 0401       ADD              R4, R4, #1
-   24 00000024 E7F4            B                loop
-   25 00000026         res
-   26 00000026 4907            LDR              R1, =r
-   27 00000028 600D            STR              R5, [R1]
-   28 0000002A         
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 F8DF D034       LDR              SP, =0x10008000
+   13 00000004 490D            LDR              R1, =a
+   14 00000006 680A            LDR              R2, [R1]
+   15 00000008 490D            LDR              R1, =b
+   16 0000000A 680B            LDR              R3, [R1]
+   17 0000000C F04F 0401       MOV              R4, #1
+   18 00000010         loop
+   19 00000010 FB04 F502       MUL              R5, R4, R2
+   20 00000014 FBB5 F6F3       UDIV             R6, R5, R3
+   21 00000018 FB06 5713       MLS              R7, R6, R3, R5
+   22 0000001C 2F00            CMP              R7, #0
+   23 0000001E D002            BEQ              res
+   24 00000020 F104 0401       ADD              R4, R4, #1
+   25 00000024 E7F4            B                loop
+   26 00000026         res
+   27 00000026 4907            LDR              R1, =r
+   28 00000028 600D            STR              R5, [R1]
    29 0000002A         STOP
    30 0000002A E7FE            B                STOP
    31 0000002C 0000000F 
@@ -90,7 +90,7 @@ Reset_Handler 00000000
 
 Symbol: Reset_Handler
    Definitions
-      At line 10 in file lcm.asm
+      At line 11 in file lcm.asm
    Uses
       At line 5 in file lcm.asm
       At line 9 in file lcm.asm
@@ -109,7 +109,7 @@ Symbol: a
    Definitions
       At line 31 in file lcm.asm
    Uses
-      At line 12 in file lcm.asm
+      At line 13 in file lcm.asm
 Comment: a used once
 b 00000030
 
@@ -117,15 +117,15 @@ Symbol: b
    Definitions
       At line 32 in file lcm.asm
    Uses
-      At line 14 in file lcm.asm
+      At line 15 in file lcm.asm
 Comment: b used once
 loop 00000010
 
 Symbol: loop
    Definitions
-      At line 17 in file lcm.asm
+      At line 18 in file lcm.asm
    Uses
-      At line 24 in file lcm.asm
+      At line 25 in file lcm.asm
 Comment: loop used once
 r 00000034
 
@@ -133,7 +133,7 @@ Symbol: r
    Definitions
       At line 33 in file lcm.asm
    Uses
-      At line 26 in file lcm.asm
+      At line 27 in file lcm.asm
 Comment: r used once
 res 00000026
 
@@ -145,9 +145,9 @@ Relocatable symbols
 
 Symbol: res
    Definitions
-      At line 25 in file lcm.asm
+      At line 26 in file lcm.asm
    Uses
-      At line 22 in file lcm.asm
+      At line 23 in file lcm.asm
 Comment: res used once
 8 symbols
 343 symbols in table

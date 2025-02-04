@@ -16,22 +16,19 @@ ARM Macro Assembler    Page 1
    10 00000000                 EXPORT           Reset_Handler
    11 00000000         
    12 00000000         Reset_Handler
-   13 00000000 F8DF 8044       LDR              R8, = Src0
-   14 00000004 F04F 050A       MOV              R5, N
-   15 00000008 F04F 0400       MOV              R4, 0x0
-   16 0000000C         Up1
-   17 0000000C F858 1B04       LDR              R1, [r8], #4
-   18 00000010 1864            ADDS             r4, r4, r1
-   19 00000012 F155 0500       ADCS             r5, #0
-   20 00000016 3D01            SUBS             R5, #1
-   21 00000018 D1F8            BNE              Up1
-   22 0000001A 1964            ADDS             r4, r4, r5
-   23 0000001C         
-   24 0000001C E7FE    STOP    B                STOP        ; while(1)
-   25 0000001E         
-   26 0000001E 0000000A 
-                       N       EQU              10
-   27 0000001E 00 00 00000001 
+   13 00000000 4810            LDR              R0, =Src0
+   14 00000002 F04F 0100       MOV              R1, #0
+   15 00000006 F04F 020A       MOV              R2, #10
+   16 0000000A         Up1
+   17 0000000A F850 3B04       LDR              R3, [R0], #4
+   18 0000000E 4419            ADD              R1, R1, R3
+   19 00000010 1E52            SUBS             R2, R2, #1
+   20 00000012 D1FA            BNE              Up1
+   21 00000014 480C            LDR              R0, =res
+   22 00000016 6001            STR              R1, [R0]
+   23 00000018         STOP
+   24 00000018 E7FE            B                STOP
+   25 0000001A 00 00 00000001 
               00000002 
               00000003 
               00000004 
@@ -40,16 +37,16 @@ ARM Macro Assembler    Page 1
               00000007 
               00000008 
               00000009 
-              0000000A Src0    DCD              1,2,3,4,5,6,7,8,9,10 ;
-   28 00000048         
-   29 00000048 00000000        AREA             DATASEG, DATA, READWRITE
-   30 00000000 00000000 
-                       Src1    DCD              0           ;
-   31 00000004                 END
-Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=sumOfArr
-ayElements.d -osumOfArrayElements.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\
-Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=sumOfA
-rrayElements.lst sumOfArrayElements.asm
+              0000000A Src0    DCD              1,2,3,4,5,6,7,8,9,10
+   26 00000044 00000000 
+              00000000         AREA             DATASEG, DATA, READWRITE
+   27 00000000 00000000 
+                       res     DCD              0
+   28 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\sumofa
+rrayelements.d -o.\sumofarrayelements.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CM
+SIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\
+sumofarrayelements.lst sumOfArrayElements.asm
 
 
 
@@ -96,29 +93,29 @@ Symbol: Reset_Handler
       At line 6 in file sumOfArrayElements.asm
       At line 10 in file sumOfArrayElements.asm
 
-STOP 0000001C
+STOP 00000018
 
 Symbol: STOP
    Definitions
-      At line 24 in file sumOfArrayElements.asm
+      At line 23 in file sumOfArrayElements.asm
    Uses
       At line 24 in file sumOfArrayElements.asm
 Comment: STOP used once
-Src0 00000020
+Src0 0000001C
 
 Symbol: Src0
    Definitions
-      At line 27 in file sumOfArrayElements.asm
+      At line 25 in file sumOfArrayElements.asm
    Uses
       At line 13 in file sumOfArrayElements.asm
 Comment: Src0 used once
-Up1 0000000C
+Up1 0000000A
 
 Symbol: Up1
    Definitions
       At line 16 in file sumOfArrayElements.asm
    Uses
-      At line 21 in file sumOfArrayElements.asm
+      At line 20 in file sumOfArrayElements.asm
 Comment: Up1 used once
 5 symbols
 
@@ -131,32 +128,17 @@ DATASEG 00000000
 
 Symbol: DATASEG
    Definitions
-      At line 29 in file sumOfArrayElements.asm
+      At line 26 in file sumOfArrayElements.asm
    Uses
       None
 Comment: DATASEG unused
-Src1 00000000
+res 00000000
 
-Symbol: Src1
+Symbol: res
    Definitions
-      At line 30 in file sumOfArrayElements.asm
+      At line 27 in file sumOfArrayElements.asm
    Uses
-      None
-Comment: Src1 unused
+      At line 21 in file sumOfArrayElements.asm
+Comment: res used once
 2 symbols
-
-
-
-ARM Macro Assembler    Page 1 Alphabetic symbol ordering
-Absolute symbols
-
-N 0000000A
-
-Symbol: N
-   Definitions
-      At line 26 in file sumOfArrayElements.asm
-   Uses
-      At line 14 in file sumOfArrayElements.asm
-Comment: N used once
-1 symbol
-343 symbols in table
+342 symbols in table
