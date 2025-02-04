@@ -1,0 +1,213 @@
+SQL> create table Person(
+  2  driver_id varchar(30),
+  3  name varchar(50),
+  4  address varchar(100),
+  5  primary key(driver_id));
+
+Table created.
+
+SQL> create table Car(
+  2  regno varchar(20),
+  3  model varchar(30),
+  4  year int,
+  5  primary key(regno));
+
+Table created.
+
+SQL> create table Accident(
+  2  report_number int,
+  3  accd_date date,
+  4  location varchar(50),
+  5  primary key(report_number));
+
+Table created.
+
+create table Owns(
+  2  driver_id varchar(30),
+  3  regno varchar(20),
+  4  primary key(driver_id, regno),
+  5  foreign key (driver_id) references Person on delete cascade,
+  6  foreign key (regno) references Car on delete cascade);
+
+Table created.
+
+create table Participated(
+  2  driver_id varchar(30),
+  3  regno varchar(20),
+  4  report_number int,
+  5  damage_amount int,
+  6  primary key (driver_id, regno, report_number),
+  7  foreign key (driver_id) references Person on delete cascade,
+  8  foreign key (regno) references Car on delete cascade,
+  9  foreign key (report_number) references Accident on delete cascade);
+
+Table created.
+
+select table_name from user_tables;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+ACCIDENT
+CAR
+OWNS
+PARTICIPATED
+PERSON
+
+SQL> insert into Person values ('1233EKWA', 'HelloWorld', 'Somewhere in world');
+
+1 row created.
+
+SQL> insert into Person values ('212WEAEE', 'Sudo', 'Linux HQ');
+
+1 row created.
+
+SQL> insert into Person values ('233WRRWS', 'Pythene', 'Conda Laboratories');
+
+1 row created.
+
+SQL> insert into Person values ('1240MMWS', 'Yoa', 'Martian Base Campus');
+
+1 row created.
+
+SQL> insert into Person values ('44300OOW', 'Singin', 'Holy Basis');
+
+1 row created.
+
+SQL> select * from Person;
+
+DRIVER_ID
+------------------------------
+NAME
+--------------------------------------------------
+ADDRESS
+--------------------------------------------------------------------------------
+1233EKWA
+HelloWorld
+Somewhere in world
+
+212WEAEE
+Sudo
+Linux HQ
+
+DRIVER_ID
+------------------------------
+NAME
+--------------------------------------------------
+ADDRESS
+--------------------------------------------------------------------------------
+
+233WRRWS
+Pythene
+Conda Laboratories
+
+1240MMWS
+Yoa
+
+DRIVER_ID
+------------------------------
+NAME
+--------------------------------------------------
+ADDRESS
+--------------------------------------------------------------------------------
+Martian Base Campus
+
+44300OOW
+Singin
+Holy Basis
+
+alter table Person modify driver_id varchar(8);
+
+alter table Person modify name varchar(10);
+
+Table altered.
+
+SQL> alter table Person modify address varchar(20);
+
+Table altered.
+
+SQL> select * from Person;
+
+DRIVER_I NAME       ADDRESS
+-------- ---------- --------------------
+1233EKWA HelloWorld Somewhere in world
+212WEAEE Sudo       Linux HQ
+233WRRWS Pythene    Conda Laboratories
+1240MMWS Yoa        Martian Base Campus
+44300OOW Singin     Holy Basis
+
+SQL> insert into Car values ('MAWEA2311', 'Tesla Model 3', 2020);
+
+1 row created.
+
+SQL> insert into Car values ('P144B0T30', 'Honda City', 2012);
+
+1 row created.
+
+SQL> insert into Car values ('IK010AAOP', 'Hyundai i10', 2013);
+
+1 row created.
+
+SQL> insert into Car values ('1111WWWW0', 'Mercedes C-Class', 2023);
+
+1 row created.
+
+SQL> insert into Car values ('124567890', 'Ford Mustang 2010', 2010);
+
+1 row created.
+
+
+SQL> @D:\230911172\Lab3\InsuranceSQL\insertingData2_1.sql
+
+
+SQL> select * from Accident;
+
+REPORT_NUMBER ACCD_DATE LOCATION
+------------- --------- --------
+          100 11-SEP-01 New York
+          200 31-OCT-20 Mumbai
+          310 24-APR-15 Udupi
+          311 25-APR-15 Manipal
+          345 01-FEB-17 Rejivick
+
+select * from Owns;
+
+DRIVER_ID                      REGNO
+------------------------------ --------------------
+1233EKWA                       MAWEA2311
+1240MMWS                       1111WWWW0
+212WEAEE                       P144B0T30
+233WRRWS                       IK010AAOP
+44300OOW                       124567890
+
+SQL> select * from Participated;
+
+DRIVER_ID                      REGNO                REPORT_NUMBER DAMAGE_AMOUNT
+------------------------------ -------------------- ------------- -------------
+1233EKWA                       MAWEA2311                      100          2300
+212WEAEE                       P144B0T30                      200         21000
+233WRRWS                       IK010AAOP                      310         32132
+233WRRWS                       IK010AAOP                      345         90000
+233WRRWS                       IK010AAOP                      311        120911
+
+
+SQL> update participated set damage_amount=25000 where report_number = 311;
+
+1 row updated.
+
+SQL> select * from Participated;
+
+DRIVER_ID                      REGNO                REPORT_NUMBER DAMAGE_AMOUNT
+------------------------------ -------------------- ------------- -------------
+1233EKWA                       MAWEA2311                      100          2300
+212WEAEE                       P144B0T30                      200         21000
+233WRRWS                       IK010AAOP                      310         32132
+233WRRWS                       IK010AAOP                      345         90000
+233WRRWS                       IK010AAOP                      311         25000
+
+SQL> delete from Accident where extract(year from accd_date) = 2001;
+
+SQL> alter table Car add type varchar(3);
+
+SQL> alter table Car year check (year > 2000 and year < 2100);
+
+SQL> 
