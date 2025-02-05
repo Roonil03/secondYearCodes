@@ -1,0 +1,125 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 40001000        DCD              0x40001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             sort, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 F04F 0067       LDR              R0, =0x67
+   13 00000004 F04F 0145       LDR              R1, =0x45
+   14 00000008 F04F 0223       LDR              R2, =0x23
+   15 0000000C F04F 0389       LDR              R3, =0x89
+   16 00000010 F04F 0412       LDR              R4, =0x12
+   17 00000014 F04F 0534       LDR              R5, =0x34
+   18 00000018 F04F 0690       LDR              R6, =0x90
+   19 0000001C F04F 0756       LDR              R7, =0x56
+   20 00000020 F04F 0878       LDR              R8, =0x78
+   21 00000024 F04F 0911       LDR              R9, =0x11
+   22 00000028 E92D 03FF       STMFD            SP!, {R0-R9}
+   23 0000002C F04F 0A24       MOV              R10, #36
+   24 00000030         OUTER
+   25 00000030 F04F 0B00       MOV              R11, #0
+   26 00000034         INNER
+   27 00000034 F85D 000B       LDR              R0, [SP, R11]
+   28 00000038 F10B 0C04       ADD              R12, R11, #4
+   29 0000003C F85D 100C       LDR              R1, [SP, R12]
+   30 00000040 4288            CMP              R0, R1
+   31 00000042 BFC4 F84D 
+              100B             STRGT            R1, [SP, R11]
+   32 00000048 F84D 000C       STRGT            R0, [SP, R12]
+   33 0000004C F10B 0B04       ADD              R11, R11, #4
+   34 00000050 45D3            CMP              R11, R10
+   35 00000052 DBEF            BLT              INNER
+   36 00000054 F1AA 0A04       SUB              R10, R10, #4
+   37 00000058 F1BA 0F00       CMP              R10, #0
+   38 0000005C DCE8            BGT              OUTER
+   39 0000005E E8BD 03FF       LDMFD            SP!, {R0-R9}
+   40 00000062         STOP
+   41 00000062 E7FE            B                STOP
+   42 00000064                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\regist
+ryselectionsort.d -o.\registryselectionsort.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\
+ARM\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --l
+ist=.\registryselectionsort.lst registrySelectionSort.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file registrySelectionSort.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file registrySelectionSort.asm
+   Uses
+      At line 2 in file registrySelectionSort.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+INNER 00000034
+
+Symbol: INNER
+   Definitions
+      At line 26 in file registrySelectionSort.asm
+   Uses
+      At line 35 in file registrySelectionSort.asm
+Comment: INNER used once
+OUTER 00000030
+
+Symbol: OUTER
+   Definitions
+      At line 24 in file registrySelectionSort.asm
+   Uses
+      At line 38 in file registrySelectionSort.asm
+Comment: OUTER used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file registrySelectionSort.asm
+   Uses
+      At line 5 in file registrySelectionSort.asm
+      At line 9 in file registrySelectionSort.asm
+
+STOP 00000062
+
+Symbol: STOP
+   Definitions
+      At line 40 in file registrySelectionSort.asm
+   Uses
+      At line 41 in file registrySelectionSort.asm
+Comment: STOP used once
+sort 00000000
+
+Symbol: sort
+   Definitions
+      At line 7 in file registrySelectionSort.asm
+   Uses
+      None
+Comment: sort unused
+5 symbols
+338 symbols in table

@@ -1,0 +1,1 @@
+.\linearsearch.o: linearSearch.asm

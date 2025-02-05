@@ -1,0 +1,1 @@
+.\registryselectionsort.o: registrySelectionSort.asm

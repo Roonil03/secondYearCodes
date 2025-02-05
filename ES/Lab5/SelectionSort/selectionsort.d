@@ -1,0 +1,1 @@
+.\selectionsort.o: selectionSort.asm

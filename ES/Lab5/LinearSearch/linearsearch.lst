@@ -1,0 +1,207 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 40001000        DCD              0x40001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             linearsearch, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 4817            LDR              R0, =array
+   13 00000002 4918            LDR              R1, =key
+   14 00000004 6809            LDR              R1, [R1]
+   15 00000006 F04F 0200       MOV              R2, #0
+   16 0000000A F04F 030A       MOV              R3, #10
+   17 0000000E         SEARCH
+   18 0000000E 5884            LDR              R4, [R0, R2]
+   19 00000010 428C            CMP              R4, R1
+   20 00000012 D006            BEQ              FOUND
+   21 00000014 F102 0204       ADD              R2, R2, #4
+   22 00000018 1E5B            SUBS             R3, R3, #1
+   23 0000001A D1F8            BNE              SEARCH
+   24 0000001C F04F 0500       MOV              R5, #0
+   25 00000020 E003            B                STORE
+   26 00000022         FOUND
+   27 00000022 F04F 0501       MOV              R5, #1
+   28 00000026 EA4F 0292       LSR              R2, #2
+   29 0000002A         STORE
+   30 0000002A 480F            LDR              R0, =res
+   31 0000002C 6005            STR              R5, [R0]
+   32 0000002E 480F            LDR              R0, =pos
+   33 00000030 6002            STR              R2, [R0]
+   34 00000032         STOP
+   35 00000032 E7FE            B                STOP
+   36 00000034 0000000F 
+              00000018 
+              00000025 
+              00000029 
+              00000034 
+              00000044 
+              00000049 
+              00000056 
+              0000005C 
+              00000064 array   DCD              15, 24, 37, 41, 52, 68, 73, 86,
+ 92, 100
+   37 0000005C 00000049 
+                       key     DCD              73
+   38 00000060 00000000 
+              00000000 
+              00000000 
+              00000000         AREA             data1, DATA, READWRITE
+   39 00000000 00000000 
+                       res     DCD              0
+   40 00000004 00000000 
+                       pos     DCD              0
+   41 00000008                 ALIGN
+   42 00000008                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\linear
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+search.d -o.\linearsearch.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include 
+-IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\linearsearch
+.lst linearSearch.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file linearSearch.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file linearSearch.asm
+   Uses
+      At line 2 in file linearSearch.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+FOUND 00000022
+
+Symbol: FOUND
+   Definitions
+      At line 26 in file linearSearch.asm
+   Uses
+      At line 20 in file linearSearch.asm
+Comment: FOUND used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file linearSearch.asm
+   Uses
+      At line 5 in file linearSearch.asm
+      At line 9 in file linearSearch.asm
+
+SEARCH 0000000E
+
+Symbol: SEARCH
+   Definitions
+      At line 17 in file linearSearch.asm
+   Uses
+      At line 23 in file linearSearch.asm
+Comment: SEARCH used once
+STOP 00000032
+
+Symbol: STOP
+   Definitions
+      At line 34 in file linearSearch.asm
+   Uses
+      At line 35 in file linearSearch.asm
+Comment: STOP used once
+STORE 0000002A
+
+Symbol: STORE
+   Definitions
+      At line 29 in file linearSearch.asm
+   Uses
+      At line 25 in file linearSearch.asm
+Comment: STORE used once
+array 00000034
+
+Symbol: array
+   Definitions
+      At line 36 in file linearSearch.asm
+   Uses
+      At line 12 in file linearSearch.asm
+Comment: array used once
+key 0000005C
+
+Symbol: key
+   Definitions
+      At line 37 in file linearSearch.asm
+   Uses
+      At line 13 in file linearSearch.asm
+Comment: key used once
+linearsearch 00000000
+
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: linearsearch
+   Definitions
+      At line 7 in file linearSearch.asm
+   Uses
+      None
+Comment: linearsearch unused
+8 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+data1 00000000
+
+Symbol: data1
+   Definitions
+      At line 38 in file linearSearch.asm
+   Uses
+      None
+Comment: data1 unused
+pos 00000004
+
+Symbol: pos
+   Definitions
+      At line 40 in file linearSearch.asm
+   Uses
+      At line 32 in file linearSearch.asm
+Comment: pos used once
+res 00000000
+
+Symbol: res
+   Definitions
+      At line 39 in file linearSearch.asm
+   Uses
+      At line 30 in file linearSearch.asm
+Comment: res used once
+3 symbols
+346 symbols in table

@@ -1,0 +1,229 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 40001000        DCD              0x40001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008         
+    8 00000008                 AREA             ascend, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         Reset_Handler
+   12 00000000 F04F 0400       MOV              R4, #0
+   13 00000004 F04F 010A       MOV              R1, #10
+   14 00000008 481E            LDR              R0, =array
+   15 0000000A 4A1F            LDR              R2, =res
+   16 0000000C         COPY
+   17 0000000C 5903            LDR              R3, [R0,R4]
+   18 0000000E 5113            STR              R3, [R2,R4]
+   19 00000010 F104 0404       ADD              R4, #4
+   20 00000014 F1A1 0101       SUB              R1, #1
+   21 00000018 2900            CMP              R1, #0
+   22 0000001A D8F7            BHI              COPY
+   23 0000001C 481A            LDR              R0, =res
+   24 0000001E F04F 010A       MOV              R1, #10
+   25 00000022 F04F 0200       MOV              R2, #0
+   26 00000026         OUT
+   27 00000026 4613            MOV              R3, R2
+   28 00000028 4614            MOV              R4, R2
+   29 0000002A F102 0504       ADD              R5, R2, #4
+   30 0000002E         IN
+   31 0000002E EBB5 0F81       CMP              R5, R1, LSL #2
+   32 00000032 DA07            BGE              swap
+   33 00000034 5906            LDR              R6, [R0, R4]
+   34 00000036 5947            LDR              R7, [R0, R5]
+   35 00000038 42B7            CMP              R7, R6
+   36 0000003A BFB8 462C       MOVLT            R4, R5
+   37 0000003E F105 0504       ADD              R5, R5, #4
+   38 00000042 E7F4            B                IN
+   39 00000044         swap
+   40 00000044 42A3            CMP              R3, R4
+   41 00000046 D003            BEQ              nSwap
+   42 00000048 58C6            LDR              R6, [R0, R3]
+   43 0000004A 5907            LDR              R7, [R0, R4]
+   44 0000004C 50C7            STR              R7, [R0, R3]
+   45 0000004E 5106            STR              R6, [R0, R4]
+   46 00000050         nSwap
+   47 00000050 F102 0204       ADD              R2, R2, #4
+   48 00000054 EBB2 0F81       CMP              R2, R1, LSL #2
+   49 00000058 DBE5            BLT              OUT
+   50 0000005A         STOP
+   51 0000005A E7FE            B                STOP
+   52 0000005C         
+   53 0000005C 00000010 
+              00000005 
+              00000033 
+              00000024 
+              00000056 
+              00000077 
+              00000021 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+              00000004 
+              00000087 
+              00000001 array   DCD              0x10,0x05,0x33,0x24,0x56,0x77,0
+x21,0x04,0x87,0x01
+   54 00000084         
+   55 00000084 00000000 
+              00000000 
+              00000000         AREA             data1, DATA, READWRITE
+   56 00000000 00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 res     DCD              0,0,0,0,0,0,0,0,0,0
+   57 00000028                 ALIGN
+   58 00000028                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\select
+ionsort.d -o.\selectionsort.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Includ
+e -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\selections
+ort.lst selectionSort.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file selectionSort.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file selectionSort.asm
+   Uses
+      At line 2 in file selectionSort.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+COPY 0000000C
+
+Symbol: COPY
+   Definitions
+      At line 16 in file selectionSort.asm
+   Uses
+      At line 22 in file selectionSort.asm
+Comment: COPY used once
+IN 0000002E
+
+Symbol: IN
+   Definitions
+      At line 30 in file selectionSort.asm
+   Uses
+      At line 38 in file selectionSort.asm
+Comment: IN used once
+OUT 00000026
+
+Symbol: OUT
+   Definitions
+      At line 26 in file selectionSort.asm
+   Uses
+      At line 49 in file selectionSort.asm
+Comment: OUT used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file selectionSort.asm
+   Uses
+      At line 5 in file selectionSort.asm
+      At line 10 in file selectionSort.asm
+
+STOP 0000005A
+
+Symbol: STOP
+   Definitions
+      At line 50 in file selectionSort.asm
+   Uses
+      At line 51 in file selectionSort.asm
+Comment: STOP used once
+array 0000005C
+
+Symbol: array
+   Definitions
+      At line 53 in file selectionSort.asm
+   Uses
+      At line 14 in file selectionSort.asm
+Comment: array used once
+ascend 00000000
+
+Symbol: ascend
+   Definitions
+      At line 8 in file selectionSort.asm
+   Uses
+      None
+Comment: ascend unused
+nSwap 00000050
+
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+Symbol: nSwap
+   Definitions
+      At line 46 in file selectionSort.asm
+   Uses
+      At line 41 in file selectionSort.asm
+Comment: nSwap used once
+swap 00000044
+
+Symbol: swap
+   Definitions
+      At line 39 in file selectionSort.asm
+   Uses
+      At line 32 in file selectionSort.asm
+Comment: swap used once
+9 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+data1 00000000
+
+Symbol: data1
+   Definitions
+      At line 55 in file selectionSort.asm
+   Uses
+      None
+Comment: data1 unused
+res 00000000
+
+Symbol: res
+   Definitions
+      At line 56 in file selectionSort.asm
+   Uses
+      At line 15 in file selectionSort.asm
+      At line 23 in file selectionSort.asm
+
+2 symbols
+346 symbols in table

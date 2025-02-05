@@ -1,0 +1,163 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 40001000        DCD              0x40001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             factorial, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         Reset_Handler
+   11 00000000 480C            LDR              R0, =n
+   12 00000002 6800            LDR              R0, [R0]
+   13 00000004 F000 F803       BL               FACT
+   14 00000008 490B            LDR              R1, =res
+   15 0000000A 6008            STR              R0, [R1]
+   16 0000000C         STOP
+   17 0000000C E7FE            B                STOP
+   18 0000000E         
+   19 0000000E         FACT
+   20 0000000E B510            PUSH             {R4, LR}
+   21 00000010 4604            MOV              R4, R0
+   22 00000012 2800            CMP              R0, #0
+   23 00000014 D007            BEQ              BASE
+   24 00000016 F1A0 0001       SUB              R0, R0, #1
+   25 0000001A F7FF FFF8       BL               FACT
+   26 0000001E 4621            MOV              R1, R4
+   27 00000020 FB00 F001       MUL              R0, R0, R1
+   28 00000024 E001            B                DONE
+   29 00000026         BASE
+   30 00000026 F04F 0001       MOV              R0, #1
+   31 0000002A         DONE
+   32 0000002A E8BD 4010       POP              {R4, LR}
+   33 0000002E 4770            BX               LR
+   34 00000030 00000005 
+                       n       DCD              5
+   35 00000034 00000000 
+              00000000         AREA             data1, DATA, READWRITE
+   36 00000000 00000000 
+                       res     DCD              0
+   37 00000004                 ALIGN
+   38 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\factor
+ialrecurssion.d -o.\factorialrecurssion.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\
+CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=
+.\factorialrecurssion.lst factorialRecurssion.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file factorialRecurssion.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file factorialRecurssion.asm
+   Uses
+      At line 2 in file factorialRecurssion.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BASE 00000026
+
+Symbol: BASE
+   Definitions
+      At line 29 in file factorialRecurssion.asm
+   Uses
+      At line 23 in file factorialRecurssion.asm
+Comment: BASE used once
+DONE 0000002A
+
+Symbol: DONE
+   Definitions
+      At line 31 in file factorialRecurssion.asm
+   Uses
+      At line 28 in file factorialRecurssion.asm
+Comment: DONE used once
+FACT 0000000E
+
+Symbol: FACT
+   Definitions
+      At line 19 in file factorialRecurssion.asm
+   Uses
+      At line 13 in file factorialRecurssion.asm
+      At line 25 in file factorialRecurssion.asm
+
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 10 in file factorialRecurssion.asm
+   Uses
+      At line 5 in file factorialRecurssion.asm
+      At line 9 in file factorialRecurssion.asm
+
+STOP 0000000C
+
+Symbol: STOP
+   Definitions
+      At line 16 in file factorialRecurssion.asm
+   Uses
+      At line 17 in file factorialRecurssion.asm
+Comment: STOP used once
+factorial 00000000
+
+Symbol: factorial
+   Definitions
+      At line 7 in file factorialRecurssion.asm
+   Uses
+      None
+Comment: factorial unused
+n 00000030
+
+Symbol: n
+   Definitions
+      At line 34 in file factorialRecurssion.asm
+   Uses
+      At line 11 in file factorialRecurssion.asm
+Comment: n used once
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+data1 00000000
+
+Symbol: data1
+   Definitions
+      At line 35 in file factorialRecurssion.asm
+   Uses
+      None
+Comment: data1 unused
+res 00000000
+
+Symbol: res
+   Definitions
+      At line 36 in file factorialRecurssion.asm
+   Uses
+      At line 14 in file factorialRecurssion.asm
+Comment: res used once
+2 symbols
+344 symbols in table
