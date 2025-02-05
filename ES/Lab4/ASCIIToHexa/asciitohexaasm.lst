@@ -1,0 +1,116 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             MyCode, CODE, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001010        DCD              0x10001010
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MyCode, CODE, READONLY
+    8 00000008                 ENTRY
+    9 00000008                 EXPORT           Reset_Handler
+   10 00000008         
+   11 00000008         Reset_Handler
+   12 00000008 480A            LDR              R0, =HexASCII
+   13 0000000A 7801            LDRB             R1, [R0]
+   14 0000000C 7842            LDRB             R2, [R0, #1]
+   15 0000000E F1A1 0130       SUB              R1, R1, #0x30
+   16 00000012 2909            CMP              R1, #9
+   17 00000014 BF88 1FC9       SUBHI            R1, R1, #7
+   18 00000018 F1A2 0230       SUB              R2, R2, #0x30
+   19 0000001C 2A09            CMP              R2, #9
+   20 0000001E BF88 1FD2       SUBHI            R2, R2, #7
+   21 00000022 EA4F 1101       LSL              R1, R1, #4
+   22 00000026 EA41 0302       ORR              R3, R1, R2
+   23 0000002A 4803            LDR              R0, =Result
+   24 0000002C 7003            STRB             R3, [R0]
+   25 0000002E         STOP
+   26 0000002E E7FE            B                STOP
+   27 00000030 34 41   HexASCII
+                               DCB              "4A"
+   28 00000032 00 00 00000000 
+              00000000         AREA             MyData, DATA, READWRITE
+   29 00000000 00      Result  DCB              0
+   30 00000001 00 00 00        ALIGN
+   31 00000004         
+   32 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\asciit
+ohexaasm.d -o.\asciitohexaasm.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Incl
+ude -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\asciitoh
+exaasm.lst asciiToHexaasm.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+HexASCII 00000030
+
+Symbol: HexASCII
+   Definitions
+      At line 27 in file asciiToHexaasm.asm
+   Uses
+      At line 12 in file asciiToHexaasm.asm
+Comment: HexASCII used once
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 1 in file asciiToHexaasm.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000008
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file asciiToHexaasm.asm
+   Uses
+      At line 5 in file asciiToHexaasm.asm
+      At line 9 in file asciiToHexaasm.asm
+
+STOP 0000002E
+
+Symbol: STOP
+   Definitions
+      At line 25 in file asciiToHexaasm.asm
+   Uses
+      At line 26 in file asciiToHexaasm.asm
+Comment: STOP used once
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file asciiToHexaasm.asm
+   Uses
+      At line 2 in file asciiToHexaasm.asm
+Comment: __Vectors used once
+5 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyData 00000000
+
+Symbol: MyData
+   Definitions
+      At line 28 in file asciiToHexaasm.asm
+   Uses
+      None
+Comment: MyData unused
+Result 00000000
+
+Symbol: Result
+   Definitions
+      At line 29 in file asciiToHexaasm.asm
+   Uses
+      At line 23 in file asciiToHexaasm.asm
+Comment: Result used once
+2 symbols
+340 symbols in table

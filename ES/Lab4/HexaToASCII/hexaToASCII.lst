@@ -1,0 +1,154 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MyCode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 480C            LDR              R0, =n
+   13 00000002 4B0D            LDR              R3,=res
+   14 00000004 7801            LDRB             R1,[R0]
+   15 00000006 F001 020F       AND              R2,R1,#0x0F
+   16 0000000A 2A09            CMP              R2,#09
+   17 0000000C D301            BLO              DOWN
+   18 0000000E F102 0207       ADD              R2,#07
+   19 00000012         DOWN
+   20 00000012 F102 0230       ADD              R2,#0x30
+   21 00000016 701A            STRB             R2,[R3]
+   22 00000018 F001 04F0       AND              R4,R1,#0xF0
+   23 0000001C EA4F 1414       MOV              R4,R4,LSR#04
+   24 00000020 2C09            CMP              R4,#09
+   25 00000022 D301            BLO              nwod
+   26 00000024 F104 0407       ADD              R4,#07
+   27 00000028         
+   28 00000028         nwod
+   29 00000028 F104 0430       ADD              R4,#0x30
+   30 0000002C 705C            STRB             R4,[R3,#1]
+   31 0000002E         
+   32 0000002E         STOP
+   33 0000002E E7FE            B                STOP
+   34 00000030         
+   35 00000030 0000003A 
+                       n       DCD              0x3A
+   36 00000034 00000000 
+              00000000         AREA             data, DATA, READWRITE
+   37 00000000 00000000 
+                       res     DCD              0
+   38 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\hexato
+ascii.d -o.\hexatoascii.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -I
+C:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\hexatoascii.ls
+t hexaToASCII.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file hexaToASCII.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file hexaToASCII.asm
+   Uses
+      At line 2 in file hexaToASCII.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DOWN 00000012
+
+Symbol: DOWN
+   Definitions
+      At line 19 in file hexaToASCII.asm
+   Uses
+      At line 17 in file hexaToASCII.asm
+Comment: DOWN used once
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 7 in file hexaToASCII.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file hexaToASCII.asm
+   Uses
+      At line 5 in file hexaToASCII.asm
+      At line 9 in file hexaToASCII.asm
+
+STOP 0000002E
+
+Symbol: STOP
+   Definitions
+      At line 32 in file hexaToASCII.asm
+   Uses
+      At line 33 in file hexaToASCII.asm
+Comment: STOP used once
+n 00000030
+
+Symbol: n
+   Definitions
+      At line 35 in file hexaToASCII.asm
+   Uses
+      At line 12 in file hexaToASCII.asm
+Comment: n used once
+nwod 00000028
+
+Symbol: nwod
+   Definitions
+      At line 28 in file hexaToASCII.asm
+   Uses
+      At line 25 in file hexaToASCII.asm
+Comment: nwod used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+data 00000000
+
+Symbol: data
+   Definitions
+      At line 36 in file hexaToASCII.asm
+   Uses
+      None
+Comment: data unused
+res 00000000
+
+Symbol: res
+   Definitions
+      At line 37 in file hexaToASCII.asm
+   Uses
+      At line 13 in file hexaToASCII.asm
+Comment: res used once
+2 symbols
+343 symbols in table

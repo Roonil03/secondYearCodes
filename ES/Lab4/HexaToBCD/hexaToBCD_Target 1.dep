@@ -1,0 +1,2 @@
+Dependencies for Project 'hexaToBCD', Target 'Target 1': (DO NOT MODIFY !)
+F (.\hexaToBCD.asm)(0x67A2AA3B)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC17xx--list .\hexatobcd.lst --xref -o .\hexatobcd.o --depend .\hexatobcd.d)

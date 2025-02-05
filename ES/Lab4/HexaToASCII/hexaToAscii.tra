@@ -1,0 +1,19 @@
+*** Creating Trace Output File 'hexaToAscii.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"hexatoascii.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "hexatoascii.o" 
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x10000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\hexaToAscii.map" -o hexaToAscii.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'hexaToAscii.axf'
+### ADS-LD Command File: 'hexaToAscii.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'hexaToAscii.lnp', Handle=0x000013BC
+### Writing '.lnp' file
+### ADS-LD Command file 'hexaToAscii.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

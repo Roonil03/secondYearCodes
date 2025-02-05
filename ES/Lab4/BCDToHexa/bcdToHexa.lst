@@ -1,0 +1,128 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MyCode, CODE, READONLY
+    8 00000000                 ENTRY
+    9 00000000                 EXPORT           Reset_Handler
+   10 00000000         
+   11 00000000         Reset_Handler
+   12 00000000 4808            LDR              R0, =n0
+   13 00000002 6803            LDR              R3, [r0]
+   14 00000004 F003 01F0       AND              R1, R3, #0xF0
+   15 00000008 EA4F 1111       LSR              R1, R1, #4
+   16 0000000C         ;MOV     R2, R1
+   17 0000000C F003 020F       AND              R2, R3, #0x0F
+   18 00000010         ;ORR     R1, R1, R2
+   19 00000010 F04F 000A       MOV              R0, #0xA
+   20 00000014 FB01 F100       MUL              R1, R1, R0
+   21 00000018 440A            ADD              R2, R2, R1
+   22 0000001A 4D03            LDR              R5, =res
+   23 0000001C 702A            STRB             R2, [r5]
+   24 0000001E E7FE    STOP    B                STOP
+   25 00000020 00000031 
+                       n0      DCD              0x31
+   26 00000024 00000000 
+              00000000         AREA             MyData, DATA, READWRITE
+   27 00000000 00000000 
+                       res     DCD              0
+   28 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\bcdtoh
+exa.d -o.\bcdtohexa.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\K
+eil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\bcdtohexa.lst bcdT
+oHexa.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file bcdToHexa.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file bcdToHexa.asm
+   Uses
+      At line 2 in file bcdToHexa.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 7 in file bcdToHexa.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file bcdToHexa.asm
+   Uses
+      At line 5 in file bcdToHexa.asm
+      At line 9 in file bcdToHexa.asm
+
+STOP 0000001E
+
+Symbol: STOP
+   Definitions
+      At line 24 in file bcdToHexa.asm
+   Uses
+      At line 24 in file bcdToHexa.asm
+Comment: STOP used once
+n0 00000020
+
+Symbol: n0
+   Definitions
+      At line 25 in file bcdToHexa.asm
+   Uses
+      At line 12 in file bcdToHexa.asm
+Comment: n0 used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyData 00000000
+
+Symbol: MyData
+   Definitions
+      At line 26 in file bcdToHexa.asm
+   Uses
+      None
+Comment: MyData unused
+res 00000000
+
+Symbol: res
+   Definitions
+      At line 27 in file bcdToHexa.asm
+   Uses
+      At line 22 in file bcdToHexa.asm
+Comment: res used once
+2 symbols
+341 symbols in table

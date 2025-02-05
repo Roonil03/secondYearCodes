@@ -1,0 +1,100 @@
+ARM Linker, 5.03 [Build 76] [MDK-ARM Lite]
+
+==============================================================================
+
+Section Cross References
+
+    hexatobcd.o(RESET) refers to hexatobcd.o(Program) for Reset_Handler
+    hexatobcd.o(Program) refers to hexatobcd.o(DATA) for BCDNUM
+
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section        8  hexatobcd.o(RESET)
+    hexaToBCD.asm                            0x00000000   Number         0  hexatobcd.o ABSOLUTE
+    Program                                  0x00000008   Section       68  hexatobcd.o(Program)
+    HEXNUM                                   0x00000042   Data           1  hexatobcd.o(Program)
+    DATA                                     0x10000000   Section        4  hexatobcd.o(DATA)
+    BCDNUM                                   0x10000000   Data           4  hexatobcd.o(DATA)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$STANDARDLIB$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __Vectors                                0x00000000   Data           0  hexatobcd.o(RESET)
+    Reset_Handler                            0x00000009   Thumb Code     0  hexatobcd.o(Program)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x00000009
+
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000050, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x0000004c, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x00000008   Data   RO            1    RESET               hexatobcd.o
+    0x00000008   0x00000044   Code   RO            2  * Program             hexatobcd.o
+
+
+    Execution Region ER_RW (Base: 0x10000000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x10000000   0x00000004   Data   RW            3    DATA                hexatobcd.o
+
+
+    Execution Region ER_ZI (Base: 0x10000004, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+
+    **** No section assigned to this execution region ****
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+        68         10          8          4          0        252   hexatobcd.o
+
+    ----------------------------------------------------------------------
+        68         10          8          4          0        252   Object Totals
+         0          0          0          0          0          0   (incl. Generated)
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+         0          0          0          0          0          0   Library Totals
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+        68         10          8          4          0        252   Grand Totals
+        68         10          8          4          0        252   ELF Image Totals
+        68         10          8          4          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                   76 (   0.07kB)
+    Total RW  Size (RW Data + ZI Data)                 4 (   0.00kB)
+    Total ROM Size (Code + RO Data + RW Data)         80 (   0.08kB)
+
+==============================================================================
+

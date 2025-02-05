@@ -1,0 +1,1 @@
+.\asciitohexaasm.o: asciiToHexaasm.asm

@@ -1,0 +1,123 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             MyCode, CODE, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001010        DCD              0x10001010
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008                 AREA             MyCode, CODE, READONLY
+    8 00000008                 ENTRY
+    9 00000008                 EXPORT           Reset_Handler
+   10 00000008         
+   11 00000008         Reset_Handler
+   12 00000008 4809            LDR              R0, =n
+   13 0000000A F04F 0200       MOV              R2, #0
+   14 0000000E F04F 0308       MOV              R3, #8
+   15 00000012         UP
+   16 00000012 F810 1B01       LDRB             R1, [R0], #1
+   17 00000016 EA4F 1202       LSL              R2, R2, #4
+   18 0000001A EA42 0201       ORR              R2, R2, R1
+   19 0000001E 1E5B            SUBS             R3, R3, #1
+   20 00000020 D1F7            BNE              UP
+   21 00000022 4804            LDR              R0, =res
+   22 00000024 6002            STR              R2, [R0]
+   23 00000026         STOP
+   24 00000026 E7FE            B                STOP
+   25 00000028 01 02 03 
+              04 05 06 
+              07 08    n       DCB              1, 2, 3, 4, 5, 6, 7, 8
+   26 00000030 00000000 
+              00000000         AREA             MyData, DATA, READWRITE
+   27 00000000 00000000 
+                       res     DCD              0
+   28 00000004                 ALIGN
+   29 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\unpack
+ed32topacked32.d -o.\unpacked32topacked32.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\AR
+M\CMSIS\Include -IC:\Keil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --lis
+t=.\unpacked32topacked32.lst unpacked32ToPacked32.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 1 in file unpacked32ToPacked32.asm
+   Uses
+      None
+Comment: MyCode unused
+Reset_Handler 00000008
+
+Symbol: Reset_Handler
+   Definitions
+      At line 11 in file unpacked32ToPacked32.asm
+   Uses
+      At line 5 in file unpacked32ToPacked32.asm
+      At line 9 in file unpacked32ToPacked32.asm
+
+STOP 00000026
+
+Symbol: STOP
+   Definitions
+      At line 23 in file unpacked32ToPacked32.asm
+   Uses
+      At line 24 in file unpacked32ToPacked32.asm
+Comment: STOP used once
+UP 00000012
+
+Symbol: UP
+   Definitions
+      At line 15 in file unpacked32ToPacked32.asm
+   Uses
+      At line 20 in file unpacked32ToPacked32.asm
+Comment: UP used once
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file unpacked32ToPacked32.asm
+   Uses
+      At line 2 in file unpacked32ToPacked32.asm
+Comment: __Vectors used once
+n 00000028
+
+Symbol: n
+   Definitions
+      At line 25 in file unpacked32ToPacked32.asm
+   Uses
+      At line 12 in file unpacked32ToPacked32.asm
+Comment: n used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyData 00000000
+
+Symbol: MyData
+   Definitions
+      At line 26 in file unpacked32ToPacked32.asm
+   Uses
+      None
+Comment: MyData unused
+res 00000000
+
+Symbol: res
+   Definitions
+      At line 27 in file unpacked32ToPacked32.asm
+   Uses
+      At line 21 in file unpacked32ToPacked32.asm
+Comment: res used once
+2 symbols
+341 symbols in table

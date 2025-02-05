@@ -1,0 +1,2 @@
+Dependencies for Project 'asciiToHexa', Target 'Target 1': (DO NOT MODIFY !)
+F (.\asciiToHexaasm.asm)(0x67A26617)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\NXP\LPC17xx--list .\asciitohexaasm.lst --xref -o .\asciitohexaasm.o --depend .\asciitohexaasm.d)

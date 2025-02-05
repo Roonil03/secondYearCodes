@@ -1,0 +1,1 @@
+.\hexatobcd.o: hexaToBCD.asm

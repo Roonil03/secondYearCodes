@@ -1,0 +1,97 @@
+ARM Linker, 5.03 [Build 76] [MDK-ARM Lite]
+
+==============================================================================
+
+Section Cross References
+
+    asciitohexaasm.o(MyCode) refers to asciitohexaasm.o(MyData) for Result
+
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    MyCode                                   0x00000000   Section       60  asciitohexaasm.o(MyCode)
+    asciiToHexaasm.asm                       0x00000000   Number         0  asciitohexaasm.o ABSOLUTE
+    HexASCII                                 0x00000030   Data           2  asciitohexaasm.o(MyCode)
+    MyData                                   0x10000000   Section        4  asciitohexaasm.o(MyData)
+    Result                                   0x10000000   Data           1  asciitohexaasm.o(MyData)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$STANDARDLIB$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __Vectors                                0x00000000   Data           0  asciitohexaasm.o(MyCode)
+    Reset_Handler                            0x00000009   Thumb Code     0  asciitohexaasm.o(MyCode)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x00000009
+
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000040, Max: 0xffffffff, ABSOLUTE)
+
+    Execution Region ER_RO (Base: 0x00000000, Size: 0x0000003c, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x0000003c   Code   RO            1  * MyCode              asciitohexaasm.o
+
+
+    Execution Region ER_RW (Base: 0x10000000, Size: 0x00000004, Max: 0xffffffff, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x10000000   0x00000004   Data   RW            2    MyData              asciitohexaasm.o
+
+
+    Execution Region ER_ZI (Base: 0x10000004, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+
+    **** No section assigned to this execution region ****
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+        60         20          0          4          0        240   asciitohexaasm.o
+
+    ----------------------------------------------------------------------
+        60         20          0          4          0        240   Object Totals
+         0          0          0          0          0          0   (incl. Generated)
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+         0          0          0          0          0          0   Library Totals
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+        60         20          0          4          0        240   Grand Totals
+        60         20          0          4          0        240   ELF Image Totals
+        60         20          0          4          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                   60 (   0.06kB)
+    Total RW  Size (RW Data + ZI Data)                 4 (   0.00kB)
+    Total ROM Size (Code + RO Data + RW Data)         64 (   0.06kB)
+
+==============================================================================
+

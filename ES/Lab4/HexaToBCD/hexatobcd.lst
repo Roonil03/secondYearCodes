@@ -1,0 +1,174 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             RESET, DATA, READONLY
+    2 00000000                 EXPORT           __Vectors
+    3 00000000         __Vectors
+    4 00000000 10001000        DCD              0x10001000
+    5 00000004 00000000        DCD              Reset_Handler
+    6 00000008                 ALIGN
+    7 00000008         
+    8 00000008                 AREA             Program, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           Reset_Handler
+   11 00000000         
+   12 00000000         Reset_Handler
+   13 00000000 480E            LDR              R0, =HEXNUM
+   14 00000002 7801            LDRB             R1, [R0]
+   15 00000004         
+   16 00000004 F04F 0200       MOV              R2, #0
+   17 00000008 F04F 0300       MOV              R3, #0
+   18 0000000C F04F 040A       MOV              R4, #10
+   19 00000010         
+   20 00000010         DIV_LOOP
+   21 00000010 F04F 0500       MOV              R5, #0
+   22 00000014         SUBTRACT
+   23 00000014 42A1            CMP              R1, R4
+   24 00000016 D304            BCC              STORE
+   25 00000018 EBA1 0104       SUB              R1, R1, R4
+   26 0000001C F105 0501       ADD              R5, R5, #1
+   27 00000020 E7F8            B                SUBTRACT
+   28 00000022         
+   29 00000022         STORE
+   30 00000022 EA4F 1101       LSL              R1, #4      ; Shift remainder l
+                                                            eft by 4 bits
+   31 00000026 EA42 0201       ORR              R2, R1      ; Store remainder i
+                                                            n upper nibble
+   32 0000002A 4629            MOV              R1, R5      ; Move quotient for
+                                                             next iteration
+   33 0000002C F103 0301       ADD              R3, R3, #1
+   34 00000030 2B02            CMP              R3, #2
+   35 00000032 D1ED            BNE              DIV_LOOP
+   36 00000034         
+   37 00000034 4802            LDR              R0, =BCDNUM
+   38 00000036 6002            STR              R2, [R0]
+   39 00000038         
+   40 00000038         STOP
+   41 00000038 E7FE            B                STOP
+   42 0000003A         
+   43 0000003A 20      HEXNUM  DCB              0x20        ; Hex number 20 (32
+                                                             in decimal)
+   44 0000003B         
+   45 0000003B 00 00000000 
+              00000000         AREA             DATA, DATA, READWRITE
+   46 00000000 00000000 
+                       BCDNUM  DCD              0
+   47 00000004                 END
+Command Line: --debug --xref --cpu=Cortex-M3 --apcs=interwork --depend=.\hexato
+bcd.d -o.\hexatobcd.o -IC:\Keil\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\K
+eil\ARM\Inc\NXP\LPC17xx --predefine="__EVAL SETA 1" --list=.\hexatobcd.lst hexa
+ToBCD.asm
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 1 in file hexaToBCD.asm
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 3 in file hexaToBCD.asm
+   Uses
+      At line 2 in file hexaToBCD.asm
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DIV_LOOP 00000010
+
+Symbol: DIV_LOOP
+   Definitions
+      At line 20 in file hexaToBCD.asm
+   Uses
+      At line 35 in file hexaToBCD.asm
+Comment: DIV_LOOP used once
+HEXNUM 0000003A
+
+Symbol: HEXNUM
+   Definitions
+      At line 43 in file hexaToBCD.asm
+   Uses
+      At line 13 in file hexaToBCD.asm
+Comment: HEXNUM used once
+Program 00000000
+
+Symbol: Program
+   Definitions
+      At line 8 in file hexaToBCD.asm
+   Uses
+      None
+Comment: Program unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 12 in file hexaToBCD.asm
+   Uses
+      At line 5 in file hexaToBCD.asm
+      At line 10 in file hexaToBCD.asm
+
+STOP 00000038
+
+Symbol: STOP
+   Definitions
+      At line 40 in file hexaToBCD.asm
+   Uses
+      At line 41 in file hexaToBCD.asm
+Comment: STOP used once
+STORE 00000022
+
+Symbol: STORE
+   Definitions
+      At line 29 in file hexaToBCD.asm
+   Uses
+      At line 24 in file hexaToBCD.asm
+Comment: STORE used once
+SUBTRACT 00000014
+
+Symbol: SUBTRACT
+   Definitions
+      At line 22 in file hexaToBCD.asm
+   Uses
+      At line 27 in file hexaToBCD.asm
+Comment: SUBTRACT used once
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+BCDNUM 00000000
+
+Symbol: BCDNUM
+   Definitions
+      At line 46 in file hexaToBCD.asm
+   Uses
+      At line 37 in file hexaToBCD.asm
+Comment: BCDNUM used once
+DATA 00000000
+
+Symbol: DATA
+   Definitions
+      At line 45 in file hexaToBCD.asm
+   Uses
+      None
+Comment: DATA unused
+2 symbols
+344 symbols in table
