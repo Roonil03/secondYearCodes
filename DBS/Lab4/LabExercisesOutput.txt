@@ -1,0 +1,478 @@
+SQL> Select * from Accident
+  2  ;
+
+REPORT_NUMBER ACCD_DATE LOCATION
+------------- --------- --------
+          111 21-JAN-08 ajdkfhj
+          200 31-OCT-20 Mumbai
+          310 24-APR-15 Udupi
+          311 25-APR-15 Manipal
+          345 01-FEB-17 Rejivick
+
+SQL> select count(*) from accident where extract (year from accd_date) = '2008';
+
+  COUNT(*)
+----------
+         1
+
+SQL> select count(*) from participated p natural join car c where c.model = 'Tesla Model 3';
+
+  COUNT(*)
+----------
+         0
+
+SQL> select * from car
+  2  ;
+
+REGNO     MODEL                                YEAR TYP
+--------- ------------------------------ ---------- ---
+MAWEA2311 Tesla Model 3                        2020
+P144B0T30 Honda City                           2012
+IK010AAOP Hyundai i10                          2013
+1111WWWW0 Mercedes C-Class                     2023
+124567890 Ford Mustang 2010                    2010
+
+SQL> select * from Person
+  2  ;
+
+DRIVER_I NAME       ADDRESS
+-------- ---------- --------------------
+driv     adjkj      ajdkfhj
+1233EKWA HelloWorld Somewhere in world
+212WEAEE Sudo       Linux HQ
+233WRRWS Pythene    Conda Laboratories
+1240MMWS Yoa        Martian Base Campus
+44300OOW Singin     Holy Basis
+
+6 rows selected.
+
+SQL> insert into car values ('THE1010RE', 'Lamborgini Egoista', 2007, 'New');
+
+1 row created.
+
+SQL> update Car set type = 'Old' where model = 'Tesla Model 3';
+
+1 row updated.
+
+SQL> update Car set type = 'New' where model  != 'Ford Mustang 2010';
+
+5 rows updated.
+
+SQL> update Car set type = 'Old' where model = 'Ford Mustang 2010';
+
+1 row updated.
+
+SQL> select * from car;
+
+REGNO     MODEL                                YEAR TYP
+--------- ------------------------------ ---------- ---
+THE1010RE Lamborgini Egoista                   2007 New
+MAWEA2311 Tesla Model 3                        2020 New
+P144B0T30 Honda City                           2012 New
+IK010AAOP Hyundai i10                          2013 New
+1111WWWW0 Mercedes C-Class                     2023 New
+124567890 Ford Mustang 2010                    2010 Old
+
+6 rows selected.
+
+SQL> select count(*) from accident where extract (year from accd_date) = '2008';
+
+  COUNT(*)
+----------
+         1
+
+SQL> select count(*) from participated p natural join car c where c.model = 'Tesla Model 3';
+
+  COUNT(*)
+----------
+         0
+
+SQL> select count(regno) from participated where (regno) IN (select regno from Car where model =
+  2
+SQL> select count(regno) from participated where (regno) IN (select regno from Car where model = 'Tesla Model 3');
+
+COUNT(REGNO)
+------------
+           0
+
+SQL> select count(*) from participated p natural join car c where c.model = 'Tesla Model 3';
+
+  COUNT(*)
+----------
+         0
+
+SQL> select count(regno) from participated where (regno) IN (select regno from Car where model = 'Tesla Model 3');
+
+COUNT(REGNO)
+------------
+           0
+
+SQL> select * from Car
+  2  ;
+
+REGNO     MODEL                                YEAR TYP
+--------- ------------------------------ ---------- ---
+THE1010RE Lamborgini Egoista                   2007 New
+MAWEA2311 Tesla Model 3                        2020 New
+P144B0T30 Honda City                           2012 New
+IK010AAOP Hyundai i10                          2013 New
+1111WWWW0 Mercedes C-Class                     2023 New
+124567890 Ford Mustang 2010                    2010 Old
+
+6 rows selected.
+
+SQL> desc participated;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DRIVER_ID                                 NOT NULL VARCHAR2(30)
+ REGNO                                     NOT NULL VARCHAR2(20)
+ REPORT_NUMBER                             NOT NULL NUMBER(38)
+ DAMAGE_AMOUNT                                      NUMBER(38)
+
+SQL> desc car
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REGNO                                     NOT NULL VARCHAR2(9)
+ MODEL                                              VARCHAR2(30)
+ YEAR                                               NUMBER(38)
+ TYPE                                               VARCHAR2(3)
+
+SQL> select count(regno) from participated where (regno) IN (select regno from Car where model = 'Tesla Model 3');
+
+COUNT(REGNO)
+------------
+           0
+
+SQL> select * from participated
+  2  ;
+
+no rows selected
+
+SQL> selected * from participated
+SP2-0734: unknown command beginning "selected *..." - rest of line ignored.
+SQL> select * from participated;
+
+no rows selected
+
+SQL> insert into participated values('1233EKWA', 'MAWEA2311', 100, 2300);
+insert into participated values('1233EKWA', 'MAWEA2311', 100, 2300)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (IT230911172.SYS_C0063792) violated - parent
+key not found
+
+
+SQL> insert into participated values('212WEAEE', 'P144B0T30', 200, 21000);
+
+1 row created.
+
+SQL> insert into participated values('233WRRWS', 'IK010AAOP', 310, 32132);
+
+1 row created.
+
+SQL> insert into participated values('233WRRWS', 'IK010AAOP', 345, 90000);
+
+1 row created.
+
+SQL> insert into participated values('233WRRWS', 'IK010AAOP', 311, 120911);
+
+1 row created.
+
+SQL> select * from participated;
+
+DRIVER_ID                      REGNO                REPORT_NUMBER DAMAGE_AMOUNT
+------------------------------ -------------------- ------------- -------------
+212WEAEE                       P144B0T30                      200         21000
+233WRRWS                       IK010AAOP                      310         32132
+233WRRWS                       IK010AAOP                      345         90000
+233WRRWS                       IK010AAOP                      311        120911
+
+SQL> Select * from car
+  2  ;
+
+REGNO     MODEL                                YEAR TYP
+--------- ------------------------------ ---------- ---
+THE1010RE Lamborgini Egoista                   2007 New
+MAWEA2311 Tesla Model 3                        2020 New
+P144B0T30 Honda City                           2012 New
+IK010AAOP Hyundai i10                          2013 New
+1111WWWW0 Mercedes C-Class                     2023 New
+124567890 Ford Mustang 2010                    2010 Old
+
+6 rows selected.
+
+SQL> insert into participated values('233WRRWS', 'MAWEA2311', 311, 120911);
+
+1 row created.
+
+SQL> insert into participated values('233WRRWS', 'MAWEA2311', 191, 12323);
+insert into participated values('233WRRWS', 'MAWEA2311', 191, 12323)
+*
+ERROR at line 1:
+ORA-02291: integrity constraint (IT230911172.SYS_C0063792) violated - parent
+key not found
+
+
+SQL> select * from participated;
+
+DRIVER_ID                      REGNO                REPORT_NUMBER DAMAGE_AMOUNT
+------------------------------ -------------------- ------------- -------------
+212WEAEE                       P144B0T30                      200         21000
+233WRRWS                       IK010AAOP                      310         32132
+233WRRWS                       IK010AAOP                      345         90000
+233WRRWS                       IK010AAOP                      311        120911
+233WRRWS                       MAWEA2311                      311        120911
+
+SQL> select count(regno) from participated where (regno) IN (select regno from Car where model = 'Tesla Model 3');
+
+COUNT(REGNO)
+------------
+           1
+
+SQL> insert into Accident values (919, '10-Jun-2019', 'Boston');
+
+1 row created.
+
+SQL> select * from accident;
+
+REPORT_NUMBER ACCD_DATE LOCATION
+------------- --------- --------
+          111 21-JAN-08 ajdkfhj
+          919 10-JUN-19 Boston
+          200 31-OCT-20 Mumbai
+          310 24-APR-15 Udupi
+          311 25-APR-15 Manipal
+          345 01-FEB-17 Rejivick
+
+6 rows selected.
+
+SQL> select p.name as OWNER_NAME,
+  2      count(pt.report_number) as No_of_Accidents,
+  3      sum(pt.damage_amount) as total_damage_amt,
+  4      from Person p, participated pt,
+  5  where p.driver_id# = pt.driver_id#
+  6  group by p.name
+  7  order by sum(pt.damage_amount) desc;
+    from Person p, participated pt,
+    *
+ERROR at line 4:
+ORA-00936: missing expression
+
+
+SQL> select * from Person
+  2  ;
+
+DRIVER_I NAME       ADDRESS
+-------- ---------- --------------------
+driv     adjkj      ajdkfhj
+1233EKWA HelloWorld Somewhere in world
+212WEAEE Sudo       Linux HQ
+233WRRWS Pythene    Conda Laboratories
+1240MMWS Yoa        Martian Base Campus
+44300OOW Singin     Holy Basis
+
+6 rows selected.
+
+SQL> select * from Participated;
+
+DRIVER_ID                      REGNO                REPORT_NUMBER DAMAGE_AMOUNT
+------------------------------ -------------------- ------------- -------------
+212WEAEE                       P144B0T30                      200         21000
+233WRRWS                       IK010AAOP                      310         32132
+233WRRWS                       IK010AAOP                      345         90000
+233WRRWS                       IK010AAOP                      311        120911
+233WRRWS                       MAWEA2311                      311        120911
+
+SQL> select p.name as OWNER_NAME,
+  2      count(pt.report_number) as No_of_Accidents,
+  3      sum(pt.damage_amount) as total_damage_amt,
+  4      from Person p, participated pt,
+  5  where p.driver_id# = pt.driver_id#
+  6  group by p.name
+  7  order by sum(pt.damage_amount) desc;
+    from Person p, participated pt,
+    *
+ERROR at line 4:
+ORA-00936: missing expression
+
+
+SQL> select p.name as OWNER_NAME,
+  2      count(pt.report_number) as No_of_Accidents,
+  3      sum(pt.damage_amount) as total_damage_amt
+  4      from Person p, participated pt,
+  5  where p.driver_id# = pt.driver_id#
+  6  group by p.name
+  7  order by sum(pt.damage_amount) desc;
+where p.driver_id# = pt.driver_id#
+*
+ERROR at line 5:
+ORA-00903: invalid table name
+
+
+SQL> select p.name as OWNER_NAME,
+  2      count(pt.report_number) as No_of_Accidents,
+  3      sum(pt.damage_amount) as total_damage_amt
+  4      from Person p, participated pt,
+  5  where p.driver_id# = pt.driver_id#
+  6  group by p.name
+  7
+SQL>
+SQL> select p.name as OWNER_NAME,
+  2      count(pt.report_number) as No_of_Accidents,
+  3      sum(pt.damage_amount) as total_damage_amt
+  4      from Person p, participated pt
+  5  where p.driver_id# = pt.driver_id#
+  6  group by p.name
+  7  order by sum(pt.damage_amount) desc;
+where p.driver_id# = pt.driver_id#
+                     *
+ERROR at line 5:
+ORA-00904: "PT"."DRIVER_ID#": invalid identifier
+
+
+SQL> select * from person
+  2  l
+  3  ;
+
+DRIVER_I NAME       ADDRESS
+-------- ---------- --------------------
+driv     adjkj      ajdkfhj
+1233EKWA HelloWorld Somewhere in world
+212WEAEE Sudo       Linux HQ
+233WRRWS Pythene    Conda Laboratories
+1240MMWS Yoa        Martian Base Campus
+44300OOW Singin     Holy Basis
+
+6 rows selected.
+
+SQL> select p.name as OWNER_NAME,
+  2      count(pt.report_number) as No_of_Accidents,
+  3      sum(pt.damage_amount) as total_damage_amt
+  4      from Person p, participated pt
+  5  where p.driver_id = pt.driver_id
+  6  group by p.name
+  7  order by sum(pt.damage_amount) desc;
+
+OWNER_NAME NO_OF_ACCIDENTS TOTAL_DAMAGE_AMT
+---------- --------------- ----------------
+Pythene                  4           363954
+Sudo                     1            21000
+
+SQL> select * from Accident
+  2
+SQL> select * from Accident;
+
+REPORT_NUMBER ACCD_DATE LOCATION
+------------- --------- --------
+          111 21-JAN-08 ajdkfhj
+          919 10-JUN-19 Boston
+          200 31-OCT-20 Mumbai
+          310 24-APR-15 Udupi
+          311 25-APR-15 Manipal
+          345 01-FEB-17 Rejivick
+
+6 rows selected.
+
+SQL> select * from Car
+  2  ;
+
+REGNO     MODEL                                YEAR TYP
+--------- ------------------------------ ---------- ---
+THE1010RE Lamborgini Egoista                   2007 New
+MAWEA2311 Tesla Model 3                        2020 New
+P144B0T30 Honda City                           2012 New
+IK010AAOP Hyundai i10                          2013 New
+1111WWWW0 Mercedes C-Class                     2023 New
+124567890 Ford Mustang 2010                    2010 Old
+
+6 rows selected.
+
+SQL> select * from Participated
+  2  ;
+
+DRIVER_ID                      REGNO                REPORT_NUMBER DAMAGE_AMOUNT
+------------------------------ -------------------- ------------- -------------
+212WEAEE                       P144B0T30                      200         21000
+233WRRWS                       IK010AAOP                      310         32132
+233WRRWS                       IK010AAOP                      345         90000
+233WRRWS                       IK010AAOP                      311        120911
+233WRRWS                       MAWEA2311                      311        120911
+
+SQL>  select * from accident
+  2
+SQL>  select * from accident;
+
+REPORT_NUMBER ACCD_DATE LOCATION
+------------- --------- --------
+          111 21-JAN-08 ajdkfhj
+          919 10-JUN-19 Boston
+          200 31-OCT-20 Mumbai
+          310 24-APR-15 Udupi
+          311 25-APR-15 Manipal
+          345 01-FEB-17 Rejivick
+
+6 rows selected.
+
+SQL> insert into Accident values (617, '31-Jan-2008', 'Jkarata');
+
+1 row created.
+
+SQL>
+SQL> insert into participated values ('212WEAEE', 'THE1010RE', 111, 10384);
+
+1 row created.
+
+SQL>
+SQL> insert into participated values ('1233EKWA', 'P144B0T30', 919, 90122);
+
+1 row created.
+
+SQL>
+SQL> insert into participated values ('44300OOW', '1111WWWW0', 617, 19191);
+
+1 row created.
+
+SQL> select p.name as OWNER_NAME, count(pt.report_number) as No_of_Accidents, sum(pt.damage_amount) as total_damage_amt from Person p, participated pt where p.driver_id = pt.driver_id group by p.name order by sum(pt.damage_amount) desc;
+
+OWNER_NAME NO_OF_ACCIDENTS TOTAL_DAMAGE_AMT
+---------- --------------- ----------------
+Pythene                  4           363954
+HelloWorld               1            90122
+Sudo                     2            31384
+Singin                   1            19191
+
+SQL> select * from Owns
+  2  ;
+
+DRIVER_ID                      REGNO
+------------------------------ --------------------
+1233EKWA                       MAWEA2311
+1240MMWS                       1111WWWW0
+212WEAEE                       P144B0T30
+233WRRWS                       IK010AAOP
+44300OOW                       124567890
+
+SQL> SELECT p.name AS OWNER_NAME, TO_CHAR(a.accd_date, 'YYYY') AS ACCIDENT_YEAR, COUNT(pt.report_number) AS NO_OF_ACCIDENTS FROM Person p JOIN Participated pt ON p.driver_id# = pt.driver_id# JOIN Accident a ON pt.report_number = a.report_number GROUP BY p.name, TO_CHAR(a.accd_date, 'YYYY') HAVING COUNT(pt.report_number) > 2 ORDER BY ACCIDENT_YEAR, OWNER_NAME;
+SELECT p.name AS OWNER_NAME, TO_CHAR(a.accd_date, 'YYYY') AS ACCIDENT_YEAR, COUNT(pt.report_number) AS NO_OF_ACCIDENTS FROM Person p JOIN Participated pt ON p.driver_id# = pt.driver_id# JOIN Accident a ON pt.report_number = a.report_number GROUP BY p.name, TO_CHAR(a.accd_date, 'YYYY') HAVING COUNT(pt.report_number) > 2 ORDER BY ACCIDENT_YEAR, OWNER_NAME
+
+                                                    *
+ERROR at line 1:
+ORA-00904: "PT"."DRIVER_ID#": invalid identifier
+
+
+SQL> SELECT p.name AS OWNER_NAME, TO_CHAR(a.accd_date, 'YYYY') AS ACCIDENT_YEAR, COUNT(pt.report_number) AS NO_OF_ACCIDENTS FROM Person p JOIN Participated pt ON p.driver_id = pt.driver_id JOIN Accident a ON pt.report_number = a.report_number GROUP BY p.name, TO_CHAR(a.accd_date, 'YYYY') HAVING COUNT(pt.report_number) > 2 ORDER BY ACCIDENT_YEAR, OWNER_NAME;
+
+OWNER_NAME ACCI NO_OF_ACCIDENTS
+---------- ---- ---------------
+Pythene    2015               3
+
+SQL> SELECT p.name AS OWNER_NAME FROM Person p JOIN Participated pt ON p.driver_id = pt.driver_id WHERE pt.report_number IS NULL;
+
+no rows selected
+
+SQL> SELECT p.name AS OWNER_NAME FROM Person p left JOIN Participated pt ON p.driver_id = pt.driver_id WHERE pt.report_number IS NULL;
+
+OWNER_NAME
+----------
+Yoa
+adjkj

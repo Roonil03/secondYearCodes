@@ -1,0 +1,76 @@
+SQL> select table_name from user_tables
+  2  ;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+ACCIDENT
+CAR
+OWNS
+PARTICIPATED
+PERSON
+
+SQL> select * from Accident;
+
+REPORT_NUMBER ACCD_DATE LOCATION
+------------- --------- --------
+          111 21-JAN-08 ajdkfhj
+          919 10-JUN-19 Boston
+          617 31-JAN-08 Jkarata
+          200 31-OCT-20 Mumbai
+          310 24-APR-15 Udupi
+          311 25-APR-15 Manipal
+          345 01-FEB-17 Rejivick
+
+7 rows selected.
+
+SQL> select * from Car;
+
+REGNO     MODEL                                YEAR TYP
+--------- ------------------------------ ---------- ---
+THE1010RE Lamborgini Egoista                   2007 New
+MAWEA2311 Tesla Model 3                        2020 New
+P144B0T30 Honda City                           2012 New
+IK010AAOP Hyundai i10                          2013 New
+1111WWWW0 Mercedes C-Class                     2023 New
+124567890 Ford Mustang 2010                    2010 Old
+
+6 rows selected.
+
+SQL> select * from Owns;
+
+DRIVER_ID                      REGNO
+------------------------------ --------------------
+1233EKWA                       MAWEA2311
+1240MMWS                       1111WWWW0
+212WEAEE                       P144B0T30
+233WRRWS                       IK010AAOP
+44300OOW                       124567890
+
+SQL> select * from Accident;
+
+REPORT_NUMBER ACCD_DATE LOCATION
+------------- --------- --------
+          111 21-JAN-08 ajdkfhj
+          919 10-JUN-19 Boston
+          617 31-JAN-08 Jkarata
+          200 31-OCT-20 Mumbai
+          310 24-APR-15 Udupi
+          311 25-APR-15 Manipal
+          345 01-FEB-17 Rejivick
+
+7 rows selected.
+
+SQL> Select * from Participated;
+
+DRIVER_ID                      REGNO                REPORT_NUMBER DAMAGE_AMOUNT
+------------------------------ -------------------- ------------- -------------
+212WEAEE                       P144B0T30                      200         21000
+233WRRWS                       IK010AAOP                      310         32132
+233WRRWS                       IK010AAOP                      345         90000
+233WRRWS                       IK010AAOP                      311        120911
+233WRRWS                       MAWEA2311                      311        120911
+212WEAEE                       THE1010RE                      111         10384
+1233EKWA                       P144B0T30                      919         90122
+44300OOW                       1111WWWW0                      617         19191
+
+8 rows selected.
