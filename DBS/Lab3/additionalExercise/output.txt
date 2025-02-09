@@ -1,0 +1,24 @@
+SQL> SELECT c.cname AS CUSTNAME, COUNT(o.order#) AS No_of_Orders, AVG(o.ordamt) AS AVG_ORDER_AMT FROM CUSTOMER c JOIN ORDERS o ON c.cust# = o.cust# GROUP BY c.cname;
+
+CUSTNAME                                           NO_OF_ORDERS AVG_ORDER_AMT
+-------------------------------------------------- ------------ -------------
+Bob                                                           1           300
+Charlie                                                       1           400
+Diana                                                         1           150
+Eve                                                           1           250
+Alice                                                         1           500
+
+SQL> SELECT s.order# FROM SHIPMENT s JOIN WAREHOUSE w ON s.warehouse# = w.warehouse# WHERE w.city = 'New York';
+
+    ORDER#
+----------
+       101
+
+SQL> UPDATE ORDERS o
+  2  SET ordamt = ordamt * (CASE
+  3      WHEN (SELECT qty FROM ORDER_ITEMS oi WHERE oi.order# = o.order#) > 10 THEN 0.9
+  4      ELSE 0.95
+  5  END)
+  6  WHERE EXISTS (SELECT 1 FROM ORDER_ITEMS oi WHERE oi.order# = o.order#);
+
+5 rows updated.
