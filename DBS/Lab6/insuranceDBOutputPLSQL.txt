@@ -1,0 +1,104 @@
+SQL> create or replace function totalAccidents(year int) return int as
+  2  total int;
+  3  begin
+  4      select count(*) into total from Accident where extract (year from accd_date) = year;
+  5      return total;
+  6  end;
+  7  /
+
+Function created.
+
+SQL> declare
+  2  result int;
+  3  begin
+  4  result := totalAccidents(&year);
+  5  dbms_output.put_line('Total Accidents are: ' || result);
+  6  end;
+  7  /
+Enter value for year: 2008
+old   4: result := totalAccidents(&year);
+new   4: result := totalAccidents(2008);
+Total Accidents are: 2
+
+PL/SQL procedure successfully completed.
+
+SQL> create or replace procedure accdByDriver(name varchar, year int) as
+  2  res int;
+  3  begin
+  4      select sum(p.damage_amount) into res from participated p natural join accident a, Person p where p.name = name and (extract (year from a.accd_date)) = year;
+  5      dbms_output.put_line('The sum is: ' || res);
+  6  end;
+  7  /
+
+Procedure created.
+
+SQL> exec accdByDriver('Pythene', 2015);
+The sum is: 1643724
+
+PL/SQL procedure successfully completed.
+
+SQL> create or replace procedure accidentInformation(loc varchar) as
+  2      cursor c1 is select report_number, accd_date, location from Accident where location = loc;
+  3      f1 Accident.report_number%TYPE;
+  4      f2 Accident.accd_date%TYPE;
+  5      f3 Accident.location%TYPE;
+  6  begin
+  7      open c1;
+  8      loop
+  9          fetch c1 into f1, f2, f3;
+ 10          exit when c1%notfound;
+ 11          if c1%found then
+ 12              dbms_output.put_line('Report Number: ' || f1 || ', Date: ' || f2 || ', Location: ' || f3);
+ 13          end if;
+ 14      end loop;
+ 15      close c1;
+ 16  end;
+ 17  /
+
+Procedure created.
+
+SQL> exec accidentInformation('Mumbai');
+Report Number: 200, Date: 31-OCT-20, Location: Mumbai
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2      cursor c1 is select p.name from Person p left join Participated pt on p.driver_id = pt.driver_id where pt.report_number is null;
+  3      n Person.name%TYPE;
+  4  begin
+  5      open c1;
+  6      loop
+  7          fetch c1 into n;
+  8          exit when c1%notfound;
+  9          dbms_output.put_line('People with no accidents: ' || n);
+ 10      end loop;
+ 11      close c1;
+ 12  end;
+ 13  /
+People with no accidents: Yoa
+People with no accidents: adjkj
+
+PL/SQL procedure successfully completed.
+
+SQL> create or replace function accidentsInvolved(license varchar) return int as
+  2      total int;
+  3  begin
+  4      select count(*) into total from Participated where license = accidentsInvolved.license;
+  5      return total;
+  6  end;
+  7  /
+
+Function created.
+
+SQL> declare
+  2      result int;
+  3  begin
+  4      result := accidentsInvolved(&license);
+  5      dbms_output.put_line('Total Accidents are: ' || result);
+  6  end;
+  7  /
+Enter value for license: '1233EKWA'
+old   4:     result := accidentsInvolved(&license);
+new   4:     result := accidentsInvolved('1233EKWA');
+
+PL/SQL procedure successfully completed.
