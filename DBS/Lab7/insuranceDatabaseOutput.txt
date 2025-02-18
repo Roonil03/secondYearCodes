@@ -1,0 +1,116 @@
+SQL> create or replace trigger abc1 after insert on participated for each row
+  2  declare
+  3      driver_name varchar2(50);
+  4      driver_address varchar2(100);
+  5  begin
+  6      select name, address into driver_name, driver_address from person where driver_id = :new.driver_id;
+  7      dbms_output.put_line('Driver id: ' || :new.driver_id || ', Name: ' || driver_name || ', Address: ' || driver_address);
+  8  end;
+  9  /
+
+Trigger created.
+
+SQL> insert into participated values('123123B', '124567890', 617, 9000);
+Driver id: 123123B, Name: Hareesh, Address: Gooba Gooba Street
+
+1 row created.
+
+SQL> create or replace trigger abc2
+  2  after insert or delete on participated
+  3  for each row
+  4  begin
+  5      if inserting then
+  6          update accident
+  7          set total_damage = total_damage + :new.damage_amount
+  8          where report_number = :new.report_number;
+  9      elsif deleting then
+ 10          update accident
+ 11          set total_damage = total_damage - :old.damage_amount
+ 12          where report_number = :old.report_number;
+ 13      end if;
+ 14  end;
+ 15  /
+
+Trigger created.
+
+SQL> select * from accident;
+
+REPORT_NUMBER ACCD_DATE LOCATION TOTAL_DAMAGE
+------------- --------- -------- ------------
+          111 21-JAN-08 ajdkfhj         10384
+          919 10-JUN-19 Boston          99122
+          617 31-JAN-08 Jkarata         28191
+          200 31-OCT-20 Mumbai          30000
+          310 24-APR-15 Udupi           32132
+          311 25-APR-15 Manipal        264822
+          345 01-FEB-17 Rejivick        90000
+
+7 rows selected.
+
+SQL> declare
+  2      amt number := 10000;
+  3      cursor c1 is
+  4          select p.regno, sum(p.damage_amount) as total_damage from participated p
+  5          join accident a on p.report_number = a.report_number
+  6          group by p.regno
+  7          having sum(p.damage_amount) > amt;
+  8      v_regno varchar2(20);
+  9      v_total_damage number;
+ 10
+ 11  begin
+ 12      open c1;
+ 13      loop
+ 14          fetch c1 into v_regno, v_total_damage;
+ 15          exit when c1%NOTFOUND;
+ 16          dbms_output.put_line('Car Registration Number: ' || v_regno || ', Total Damage: ' || v_total_damage);
+ 17      end loop;
+ 18      close c1;
+ 19  end;
+ 20  /
+Car Registration Number: MAWEA2311, Total Damage: 120911
+Car Registration Number: THE1010RE, Total Damage: 10384
+Car Registration Number: 124567890, Total Damage: 27000
+Car Registration Number: P144B0T30, Total Damage: 111122
+Car Registration Number: IK010AAOP, Total Damage: 243043
+Car Registration Number: 1111WWWW0, Total Damage: 42191
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2      cursor c2 is
+  3          select p.regno, sum(p.damage_amount) as total_damage
+  4          from participated p
+  5          group by p.regno
+  6          having count(p.report_number) > 1;
+  7      v_regno varchar2(20);
+  8      v_total_damage number;
+  9  begin
+ 10      open c2;
+ 11      loop
+ 12          fetch c2 into v_regno, v_total_damage;
+ 13          exit when c2%NOTFOUND;
+ 14          dbms_output.put_line('Car Registration Number: ' || v_regno || ', Total Damage: ' || v_total_damage);
+ 15      end loop;
+ 16      close c2;
+ 17  end;
+ 18  /
+Car Registration Number: 124567890, Total Damage: 27000
+Car Registration Number: P144B0T30, Total Damage: 111122
+Car Registration Number: IK010AAOP, Total Damage: 243043
+Car Registration Number: 1111WWWW0, Total Damage: 42191
+
+PL/SQL procedure successfully completed.
+
+SQL> select a.location, avg(p.damage_amount) as avg_damage from accident a join participated p on a.report_number = p.report_number group by a.location;
+
+LOCATION AVG_DAMAGE
+-------- ----------
+ajdkfhj       10384
+Jkarata     14095.5
+Manipal       88274
+Udupi         32132
+Boston        49561
+Mumbai        15000
+Rejivick      90000
+
+7 rows selected.
