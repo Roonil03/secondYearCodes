@@ -1,0 +1,5 @@
+google.com 142.250.69.78
+example.com 93.184.216.34
+github.com 140.82.121.3
+stackoverflow.com 151.101.1.69
+reddit.com 151.101.65.140

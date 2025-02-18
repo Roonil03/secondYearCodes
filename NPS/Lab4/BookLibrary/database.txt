@@ -1,0 +1,6 @@
+The Great Gatsby|F. Scott Fitzgerald|A001|180|Scribner
+1984|George Orwell|A002|328|Harcourt Brace
+To Kill a Mockingbird|Harper Lee|A003|281|J.B. Lippincott & Co.
+Pride and Prejudice|Jane Austen|A004|432|T. Egerton
+What if?|Randal Munroe|320|450|xkcd Publishers
+
