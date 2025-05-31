@@ -45,7 +45,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>adc</OutputName>
+          <OutputName>intenistyOfLED</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -416,9 +416,9 @@
               <FilePath>C:\Keil\ARM\Startup\NXP\LPC17xx\system_LPC17xx.c</FilePath>
             </File>
             <File>
-              <FileName>adc.c</FileName>
+              <FileName>intense.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\adc.c</FilePath>
+              <FilePath>.\intense.c</FilePath>
             </File>
           </Files>
         </Group>
